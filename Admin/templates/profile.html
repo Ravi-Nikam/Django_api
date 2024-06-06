@@ -16,6 +16,7 @@
               </div>
             </div>
           </div>
+          
         {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -38,6 +39,7 @@
                     <div class="card-body p-4 p-md-5">
                       <form method="post" action="">
                         {% csrf_token %}
+
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="form-outline">
@@ -53,7 +55,7 @@
                                 id="firstName"
                                 class="form-control form-control-lg"
                                 name="Fname"
-                                value="1"
+                                value="{{user_profile.First_Name}}"
                               />
                               <label class="form-label" for="firstName"
                                 >First Name</label
@@ -67,7 +69,7 @@
                                 id="lastName"
                                 class="form-control form-control-lg"
                                 name="Lname"
-                                value="{{user_profile.Lname}}"
+                                value="{{user_profile.Last_Name}}"
                               />
                               <label class="form-label" for="lastName"
                                 >Last Name</label
@@ -77,49 +79,9 @@
                         </div>
 
                         <div class="row">
-                          <div class="col-md-6 mb-4 d-flex align-items-center">
-                            <script>
-                              function check_dob() {
-                                var rege = /^\d{2}-\d{2}-\d{4}$/;
-                                var DOB =
-                                  document.getElementById("birthdayDate").value;
-                                if (rege.test(DOB)) {
-                                  var date = new Date();
-                                  var dob_date = new Date(DOB);
-                                  //console.log(date.getFullYear(),dob_date.getFullYear())
-                                  if ((date.getFullYear() > dob_date.getFullYear()) & (dob_date.getFullYear() > 1900)) {
-                                    document.getElementById("msg").innerText = ""
-                                    return true;
-                                  } else {
-                                    document.getElementById("msg").innerText =
-                                      "Enter Proper date";
-                                    return false;
-                                  }
-                                } else {
-                                  document.getElementById("msg").innerText =
-                                    "Enter Proper date";
-                                  return false;
-                                }
-                              }
-                            </script>
-                            <div class="form-outline datepicker w-100">
-                              <input
-                                type="text"
-                                class="form-control form-control-lg"
-                                id="birthdayDate"
-                                name="Dob"
-                                onfocusout="check_dob()"
-                                value={{user_profile.Dob}}
-                              />
-                              <label for="birthdayDate" class="form-label"
-                                >Birthday Must Be in DD-MM-YYYY</label
-                              >
-                              <span id="msg"></span>
-                            </div>
-                          </div>
+
                           <div class="col-md-6 mb-4">
                             <h6 class="mb-2 pb-1">Gender:</h6>
-
                             <div class="form-check form-check-inline">
                               <input
                                 class="form-check-input"
@@ -127,13 +89,12 @@
                                 name="Gender"
                                 id="femaleGender"
                                 value="Female"
-                                {% if user_profile.Gender == 'Female' %}checked{% endif %}
+                                {% if user_profile.Gender == 'F' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="femaleGender"
                                 >Female</label
                               >
                             </div>
-
                             <div class="form-check form-check-inline">
                               <input
                                 class="form-check-input"
@@ -141,7 +102,7 @@
                                 name="Gender"
                                 id="maleGender"
                                 value="Male"
-                                {% if user_profile.Gender == 'Male' %}checked{% endif %}
+                                {% if user_profile.Gender == 'M' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="maleGender"
                                 >Male</label
@@ -155,7 +116,7 @@
                                 name="Gender"
                                 id="otherGender"
                                 value="Other"
-                                {% if user_profile.Gender == 'Other' %}checked{% endif %}
+                                {% if user_profile.Gender == 'X' %} checked {% endif %}
                               />
                               <label class="form-check-label" for="otherGender"
                                 >Other</label
@@ -191,7 +152,7 @@
                                 id="emailAddress"
                                 class="form-control form-control-lg"
                                 name="Mail"
-                                value="{{user_profile.Email}}"
+                                value="{{user_profile.Email }}"
                                 disabled
                               />
                               <label class="form-label" for="emailAddress"
@@ -230,7 +191,7 @@
                                 class="form-control form-control-lg"
                                 name="MobileNumber"
                                 onfocusout="mobilecheck()"
-                                value="{{user_profile.MobileNumber}}"
+                                value="{{user_profile.Phone_Number}}"
                               />
                               <label class="form-label" for="phoneNumber"
                                 >Phone Number</label
