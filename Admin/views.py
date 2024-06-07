@@ -70,6 +70,7 @@ def registration(request):
             'first_name': first_name,
             'last_name': last_name,
             'email': email,
+            "Date_of_birth" : Date_of_birth,
             'password': password,
             'phone_number': Phone_Number,
             'Gender': Gender

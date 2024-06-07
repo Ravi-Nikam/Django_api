@@ -16,10 +16,11 @@ class CustomUser(AbstractUser):
     username = None
     phone_number  = models.IntegerField(default="000")
     email = models.EmailField(unique=True)
+    dob = models.CharField(max_length=10)
     Gender = models.CharField(max_length=1,choices=[('M', 'Male'), ('F', 'Female'),('X', 'Other')], default='M')
     
     USERNAME_FIELD = 'email'  # MEANS PHONE NUMBER IS WORK AS A username
-    REQUIRED_FIELDS = ['first_name','last_name','Gender','phone_number']
+    REQUIRED_FIELDS = ['first_name','last_name','Gender','phone_number',"dob"]
     
     objects = UserManager()
 
