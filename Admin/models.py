@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser,AbstractBaseUser,PermissionsMixin
 from .manager import UserManager
 
 # Create your models here.
@@ -12,17 +12,52 @@ class Gender_option(models.TextChoices):
     OTHER = 'X', 'Other'
 
 
-class CustomUser(AbstractUser):
+class User(AbstractBaseUser,PermissionsMixin):
+    print("3***************************")
     username = None
-    phone_number  = models.IntegerField(default="000")
+    phone_number  = models.IntegerField()
     email = models.EmailField(unique=True)
     dob = models.CharField(max_length=10)
-    Gender = models.CharField(max_length=1,choices=[('M', 'Male'), ('F', 'Female'),('X', 'Other')], default='M')
+    Gender = models.CharField(max_length=1,choices=[('M', 'Male'), ('F', 'Female'),('X', 'Other')])
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    
+    # required fields
+    date_joined = models.DateTimeField(auto_now_add=True)
+    last_login = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=True)
+    is_admin=models.BooleanField(default=True)
+    
     
     USERNAME_FIELD = 'email'  # MEANS PHONE NUMBER IS WORK AS A username
     REQUIRED_FIELDS = ['first_name','last_name','Gender','phone_number',"dob"]
-    
+    print("4***************************")
     objects = UserManager()
+    
+    def __str__(self):
+        return self.email
+
+
+    def has_perm(self,perm,obj=None):
+        return self.is_admin
+    
+    def has_module_parm(self,app_label):
+        return True
+
+
+
+
+
+
+
+
+
+
+
 
 class Employee(models.Model):
     First_Name  = models.CharField(max_length=50)

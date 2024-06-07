@@ -176,6 +176,6 @@ SIMPLE_JWT = {
 }
 
 
-AUTH_USER_MODEL = 'Admin.CustomUser'
+AUTH_USER_MODEL = 'Admin.User'
 
 

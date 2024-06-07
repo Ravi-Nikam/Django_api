@@ -1,22 +1,31 @@
 from rest_framework import serializers
-from .models import Employee,CustomUser
+from .models import Employee,User
 from django.contrib.auth.hashers import make_password,check_password
     
 class EmpSerializers(serializers.ModelSerializer):
     # country = serializers.SerializerMethodField()
     class Meta:
-        model = CustomUser
-        fields = ['phone_number','email','Gender','first_name','password','last_name']  # All field
-        extra_kwargs = {'password': {'write_only': True}}
-
+        model = User
+        fields = ['phone_number','email','Gender','first_name','password','last_name','dob']  # All field
+        # extra_kwargs = {
+        #     'password': {'write_only': True},
+        #     'first_name': {'required': True},
+        #     'last_name': {'required': True},
+        #     'Gender': {'required': True},
+        #     'phone_number': {'required': True},
+        #     'dob': {'required': True}
+        # }
+    print("6***************************")
     def validate(self,data):
+        for fields in User.REQUIRED_FIELDS:
+            if fields not in data:
+                raise serializers.ValidationError("Fields Require",fields)
         print("big data",data)
         return data
     
     def create(self, validated_data):
-        print("validate data",validated_data)
         validated_data['password']=make_password(validated_data['password'])   # Adjust if Employee model does not have set_password method
-        user = CustomUser.objects.create(**validated_data)
+        user = User.objects.create(**validated_data)
         # Assuming you want to set a hashed password or do any other processing
         return user
     
