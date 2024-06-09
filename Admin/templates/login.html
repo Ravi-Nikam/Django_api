@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+<html class="no-js" lang="zxx">
+
+<head>
+    
+</head>
+
+<body>
+  
+{% block body %}
+<!-- slider_area_start -->
+<div class="slider_area">
+  <div class="single_slider  d-flex align-items-center slider_bg_1 overlay2">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12">
+                  <div class="slider_text text-center">
+                      <h2 style="color:white;">Login </h2>
+                  </div>
+              </div>
+          </div>
+<section class="vh-50 gradient-custom">
+  <div class="container py-5 h-50">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-login" style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.8);">
+
+          <div class="card-body p-4 p-md-5 bg5">
+            {% if messages %}
+                  <ul class="messages">
+                     {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}" style="color:white;"{% endif %}>{{ message }}</li>
+                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                     </button>
+                     {% endfor %}
+                  </ul>
+                  {% endif %}
+            <form method="post" action="">
+            {% if msg %}
+                <div class="alert alert-danger">
+                    <strong>!!</strong> {{ msg }}
+                </div>
+            {% endif %}
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 ">
+                  <div class="form-outline"> 
+                    <input type="email" id="emailAddress" class="form-control form-control-lg" name="Mail"/>
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+                  <div class="form-outline">
+                    <input type="Password" id="Password" class="form-control form-control-lg" name="Password" />
+                    <label class="form-label" for="Password">Password</label>
+                  </div>
+                </div>
+                {% comment %} connect with gmail {% endcomment %}
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline"> 
+                    <div class="form-text text-end" style="padding-left:45px;">
+                      <a href="#" id="continueWithGmail">Continue with Gmail</a>
+                    </div>
+                  </div>
+                  {% comment %} <div class="form-outline"> 
+                    <div class="form-text text-end"  style="padding-left:45px;">
+                      <a href="#" id="continueWithGmail">Continue with Facebook</a>
+                    </div>
+                  </div> {% endcomment %}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 ">
+                  <a href="#" style="color:color-mix;">
+                      Forgot password !!
+                  </a>
+                </div>
+              </div>
+              <div class="mt-4 pt-1">
+                <input class="btn btn-primary btn-lg" type="submit" value="Login" />
+                <input class="btn btn-primary btn-lg" type="submit" value="Signup" />
+              </div>
+              <div class="mt-4 pt-1">
+              
+              
+              </div>
+              <style>
+                #continueWithGmail {
+                  /* Style the link to resemble a button, if desired */
+                  display: inline-block;
+                  padding: 10px 20px;
+                  background-color: #00060f; /* Gmail blue */
+                  color: #fff;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  border-style: hidden;
+                }
+                
+                #continueWithGmail:hover {
+                  background-color: #cc1d1d; /* Darker blue on hover */
+                }
+                
+                .btn-primary {
+                  background: linear-gradient(to right, #3366ff, #00ccff); /* Gradient background */
+                  border: 2px solid #00b3ff; /* Blue border */
+                  border-radius: 25px; /* Rounded corners */
+                  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Soft shadow */
+                  font-family: 'Roboto', sans-serif; /* Modern font */
+                  font-size: 16px; /* Adjust font size as needed */
+                  color: #fff; /* White text */
+                  padding: 12px 20px; /* Adjust padding for spacing */
+                  cursor: pointer; /* Hand cursor on hover */
+                  transition: all 0.3s ease-in-out; /* Smooth transitions */
+                }
+                
+                .btn-primary:hover {
+                  background-color: #00b3ff; /* Lighter gradient on hover */
+                  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+                }  
+                label {
+                  padding-top:5px;
+                  color:#000000;
+                }              
+                h5 {
+                  padding-top:5px;
+                  border:5px;
+                }
+              </style>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+</div>
+</div>
+{% endblock %}
+</body>
+</html>

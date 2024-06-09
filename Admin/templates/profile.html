@@ -1,0 +1,269 @@
+{% extends 'base.html' %} 
+{% load static %}
+<html class="no-js" lang="zxx">
+  <head> </head>
+
+  <body>
+    {% block body %}
+    <!-- slider_area_start -->
+    <div class="slider_area">
+      <div class="single_slider d-flex align-items-center slider_bg_1 overlay2">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="slider_text text-center">
+                <h4 style="color: white; padding-top: 55px">My profile</h4>
+              </div>
+            </div>
+          </div>
+          
+        {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}" style="color:white;"{% endif %}>{{ message }}</li>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    {% endfor %}
+                </ul>
+        {% endif %}
+          <section cl-ass="vh-100 gradient-custom">
+            <div class="container py-5 h-100">
+              <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                  <div
+                    class="card shadow-2-strong card-registration"
+                    style="border-radius: 15px; background-color: rgba(255, 255, 255, 0.8);"
+                  >
+                  
+                    <div class="card-body p-4 p-md-5">
+                      <form method="post" action="">
+                        {% csrf_token %}
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="form-outline">
+                                    <img src="{% static 'images/profile.png' %}" width="100px;" height="100px" style="border-style:hidden; border-radius: 131px;">
+                                </div>
+                              </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input
+                                type="text"
+                                id="firstName"
+                                class="form-control form-control-lg"
+                                name="Fname"
+                                value="{{user_profile.First_Name}}"
+                              />
+                              <label class="form-label" for="firstName"
+                                >First Name</label
+                              >
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                              <input
+                                type="text"
+                                id="lastName"
+                                class="form-control form-control-lg"
+                                name="Lname"
+                                value="{{user_profile.Last_Name}}"
+                              />
+                              <label class="form-label" for="lastName"
+                                >Last Name</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+
+                          <div class="col-md-6 mb-4">
+                            <h6 class="mb-2 pb-1">Gender:</h6>
+                            <div class="form-check form-check-inline">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="Gender"
+                                id="femaleGender"
+                                value="Female"
+                                {% if user_profile.Gender == 'F' %} checked{% endif %}
+                              />
+                              <label class="form-check-label" for="femaleGender"
+                                >Female</label
+                              >
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="Gender"
+                                id="maleGender"
+                                value="Male"
+                                {% if user_profile.Gender == 'M' %} checked{% endif %}
+                              />
+                              <label class="form-check-label" for="maleGender"
+                                >Male</label
+                              >
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                              <input
+                                class="form-check-input"
+                                type="radio"
+                                name="Gender"
+                                id="otherGender"
+                                value="Other"
+                                {% if user_profile.Gender == 'X' %} checked {% endif %}
+                              />
+                              <label class="form-check-label" for="otherGender"
+                                >Other</label
+                              >
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-6 mb-4 pb-2">
+                            <script>
+                              function emailcheck() {
+                                email_validate =
+                                  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._s]+.[a-zA-Z]{2,4}$/;
+                                var mail =
+                                  document.getElementById("emailAddress").value;
+                                console.log(mail);
+                                if (email_validate.test(mail)) {
+                                  document.getElementById(
+                                    "email_verify"
+                                  ).innerText = "";
+                                } else {
+                                  document.getElementById(
+                                    "email_verify"
+                                  ).innerText = "Please Enter Proper Email !";
+                                }
+                              }
+                            </script>
+                            <div class="form-outline">
+                              <input
+                                type="email"
+                                onfocusout="emailcheck()"
+                                id="emailAddress"
+                                class="form-control form-control-lg"
+                                name="Mail"
+                                value="{{user_profile.Email }}"
+                                disabled
+                              />
+                              <label class="form-label" for="emailAddress"
+                                >Email</label
+                              >
+                              <span id="email_verify"></span>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-4 pb-2">
+                            <script>
+                              function mobilecheck() {
+                                var mobile =
+                                  document.getElementById("phoneNumber").value;
+                                console.log(mobile);
+                                number = /^[0-9]/;
+                                if (number.test(mobile)) {
+                                  if (mobile.length >= 10) {
+                                    document.getElementById("phone").innerText = ""
+                                    return true;
+                                  } else {
+                                    document.getElementById("phone").innerText =
+                                      " Please Enter Proper Mobile Number !";
+                                    return false;
+                                  }
+                                } else {
+                                  document.getElementById("phone").innerText =
+                                    " Please Enter Proper Mobile Number !";
+                                  return false;
+                                }
+                              }
+                            </script>
+                            <div class="form-outline">
+                              <input
+                                type="tel"
+                                id="phoneNumber"
+                                class="form-control form-control-lg"
+                                name="MobileNumber"
+                                onfocusout="mobilecheck()"
+                                value="{{user_profile.Phone_Number}}"
+                              />
+                              <label class="form-label" for="phoneNumber"
+                                >Phone Number</label
+                              >
+                              <span id="phone"></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-10">
+                              <select
+                                class="select form-control-lg"
+                                name="User_Type"
+                                disabled
+                              >
+                                <option value="2" {% if user_profile.User_Type == "2" %}selected{% endif %}>Admin</option>
+                                <option value="3" {% if user_profile.User_Type == "3" %}selected{% endif %}>Musician</option>
+                                <option value="1" {% if user_profile.User_Type == "1" %}selected{% endif %}>User</option>
+                              </select>
+                              <label class="form-label select-label"
+                                >Choose option</label
+                              >
+                            </div>
+                          </div>
+                        
+                        
+
+                        <div class="mt-4 pt-2">
+                          <input
+                            class="btn btn-primary btn-lg"
+                            type="submit"
+                            value="Edit Profile"
+                          />
+                          {% comment %} <input
+                            class="btn btn-primary btn-lg"
+                            type="submit"
+                            value="Login"
+                          /> {% endcomment %}
+                        </div>
+                      </form>
+                      <style>
+                        .btn-primary {
+                          background: linear-gradient(to right, #3366ff, #00ccff); /* Gradient background */
+                          border: 2px solid #00b3ff; /* Blue border */
+                          border-radius: 25px; /* Rounded corners */
+                          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Soft shadow */
+                          font-family: 'Roboto', sans-serif; /* Modern font */
+                          font-size: 16px; /* Adjust font size as needed */
+                          color: #fff; /* White text */
+                          padding: 12px 20px; /* Adjust padding for spacing */
+                          cursor: pointer; /* Hand cursor on hover */
+                          transition: all 0.3s ease-in-out; /* Smooth transitions */
+                        }
+                        
+                        .btn-primary:hover {
+                          background-color: #00b3ff; /* Lighter gradient on hover */
+                          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+                        }                
+                        label {
+                          color:#000000;
+                          padding-top:5px;
+                        }
+                      </style>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+  </body>
+</html>
