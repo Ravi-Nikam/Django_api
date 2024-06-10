@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import Employee,User
 from django.contrib.auth.hashers import make_password,check_password
-    
+from django.contrib.auth import authenticate
+
 class EmpSerializers(serializers.ModelSerializer):
     # country = serializers.SerializerMethodField()
     class Meta:
@@ -40,26 +41,32 @@ class LoginSerializers(serializers.Serializer):
         # They Are same as the Model attributes 
         # this also display in the api attributes 
         # try to make it in lowercase
-        email=attrs.get('Email') 
-        password = attrs.get('Password')
-        print("PASSWORD CHECKER IS CHECKED",password)
-        if not email or not password:
+        # email=attrs.get('Email') 
+        # password = attrs.get('Password')
+        usr=authenticate(email=attrs['Email'],password=attrs['Password'])
+        
+        if not attrs['Email'] or not attrs['Password']:
+            print("?????????????>>>>>>>>>>>>>>>>",usr)
             raise serializers.ValidationError("Both email and password are required.")
         try:
-            employee = Employee.objects.get(Email=email)
-            print("Here is an Emplpoyee",employee)
-            print("DATA NOT FOUND")
-        except Employee.DoesNotExist:
+            if usr:
+                print("YES USER")
+                if User.objects.filter(email=attrs['Email']).exists():
+                    print("Till this done")
+                    user = User.objects.get(email=attrs['Email'])
+                    print("-------->",user)
+                    if check_password(attrs['Password'],user.password):
+                        print("TILL GOOD")
+                        print("Here is an Emplpoyee",user)
+                        print("DATA NOT FOUND")
+        except User.DoesNotExist:
             raise serializers.ValidationError("Invalid email or password.")
-        if not check_password(password, employee.Password):
-            raise serializers.ValidationError("Invalid email or password.")
-        
-        attrs['employee'] = employee
+        # if not check_password(password, User.Password):
+        #     raise serializers.ValidationError("Invalid email or password.")
+        attrs['employee'] = user
 
         return attrs
     
-    
-
 
 class profile_serializer(serializers.ModelSerializer):
     class Meta:

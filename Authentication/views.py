@@ -25,9 +25,6 @@ from django.contrib.auth import get_user_model
 
 
 User = get_user_model()
-
-
-
 # @api_view(['GET','POST'])
 # @permission_classes([IsAuthenticated])
 
@@ -119,41 +116,24 @@ def login(request):
             "Email": email,
             "Password":password
         }
-
         headers = {'Content-Type': 'application/json'}
         BASE_URL = "http://127.0.0.1:8000/"
         ENDPOINT = 'login_api/'
         res=requests.post(BASE_URL + ENDPOINT, json.dumps(data),headers=headers)
-
+        print("=====>12222")
         # Perform authentication (assuming email is used for authentication)
-        
+        data=res.json()
+        print("****************========>",data['emp']['Email'])
         if res.status_code == 200:
             try:
-                
-                request.session['mail']=email
+                request.session['mail']=data['emp']['Email']
+                print("------------------------------------------->>>",request.session.get('mail'))
                 response_data = res.json()
-                print("============>",response_data)
-                import jwt
-                # access_token_str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE3MDU1NTE0LCJpYXQiOjE3MTcwNTUyMTQsImp0aSI6IjMxOTBmZGQ3ZDRmMzQ3N2JhNzAwNDI0MWI1NjZkM2IxIiwidXNlcl9pZCI6Nn0.of6yxKAstIMdkaO9NpCXpAl54gZw0A6nBeOemO6v6b8'
-                access_token = response_data.get('access')
-                print(access_token)
-                # decoded_payload=jwt.decode(access_token, settings.SECRET_KEY, algorithms=["HS256"])
-                # print("*******************////////////////////////",decoded_payload)
-                # decoded_payload=access_token.payload
-                # token_type = access_token['token_type']
-                # # typesss = access_token['user_id']
-                # typesss = access_token.get('emp')
-                # exp = access_token['exp']
-                # print("access_token",decoded_payload)
-
-                    
                 if 'message' in response_data and response_data['message'] == 'Login successful!':
                     # Login successful, redirect to desired page (e.g., 'index')
-
-                    payload = jwt.decode(access_token, settings.SECRET_KEY, algorithms=["HS256"])
-                    print("Payload:", payload)
                     response = HttpResponseRedirect(reverse('index'))
-                    response.set_cookie('jwt', access_token, httponly=True)
+                    print("Access token is printed",data['access'])
+                    response.set_cookie('jwt',data['access'], httponly=True)
                     return response
                 else:
                     # Handle unexpected response content
@@ -186,31 +166,31 @@ def login(request):
 
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+# @permission_classes([AllowAny])
 def login_api(request):
-    print("data of request ****************",type(request.data))
     try:
         serializer = LoginSerializers(data=request.data)
         try:
             if serializer.is_valid():
+                print("=======123=======>",serializer.data)
                 emp=serializer.validated_data['employee']
                 refresh = RefreshToken.for_user(emp)
                 print(refresh)
                 return Response({
-                    'emp':str(emp),
+                    'emp': serializer.data,
                     'refresh': str(refresh),
                     'access': str(refresh.access_token),
                     "message": "Login successful!"
                 }, status=status.HTTP_200_OK)
                 
-                # print("==================>",serializer.data)
-                # return Response({"message": "Login successful!"}, status=status.HTTP_200_OK)
+                print("==================>",serializer.data)
+                return Response({"message": "Login successful!"}, status=status.HTTP_200_OK)
             else:
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
             
         except Exception as e:
             # Handle other errors appropriately
-            return Response({"error": "An error occurred."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({"error": "An error occurred.","EROR":e}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     except Exception as e:
         print(e)
         return Response(serializer.errors)
@@ -219,26 +199,24 @@ from django.conf import settings
 import jwt
 
 def Profile(request):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [JWTAuthentication] 
     token=request.COOKIES.get('jwt')
+    print("here is my token",token)
     try:
         # Decode the token using UntypedToken
         token_verify=UntypedToken(token)
+        print("here is my token 22",token_verify)
+        print("session",request.session['mail'])
         if token_verify:
             # Employee.objects.filter(Email=Email)   
-            Emp_info=Employee.objects.get(Email=request.session.get('mail'))
-            print(Emp_info.Email)
-            x=Emp_info.Email
-            print("/////////////////////",type(x))
-            data = {
-                "Email":x
-            }
+            # User_info=User.objects.get(Email=request.session.get('mail'))
+            # print(User_info.Email)
+            # x=User_info.Email
+            # print("/////////////////////",type(x))
             try:
                 BASEURL = "http://127.0.0.1:8000/"
-                
                 ENDPOINT ='get_profile_details/'
-                
-                decoded_payload=jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
-                print("decodeed token",decoded_payload)
                 # Headers for the request
                 headers = {
                     'Content-Type': 'application/json',
@@ -260,6 +238,7 @@ def Profile(request):
                 print("DONE")
                 print("Response text:", resp.text)
                 return JsonResponse({'detail': 'Unknown error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            
         if request.method == 'POST':
             print("Called")
             first_name = request.POST['Fname']
@@ -276,7 +255,7 @@ def Profile(request):
             }
             print("]]]",data)
             # try:
-            #     BASEURL = "http://127.0.0.1:8000/"
+            #     BASEURL = "http://127.0.0.1:8000/" 
             #     ENDPOINT ='profile_api/'
                 
             #     headers = {'Content-Type': 'application/json'}
@@ -293,15 +272,18 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-@api_view(['GET'])
+@api_view(['GET','POST'])
 @permission_classes([IsAuthenticated])
 def get_profile_details(request):
     # return Response({"message": "Hello, world!"}, status=status.HTTP_200_OK)
     try:
         print("---->")
-        email = request.session.get('mail')
+        try:
+            email = request.session.get('mail')
+        except Exception as e:
+            print("erroorrr",e)
         print("**************",email)
-        Emp_obj = Employee.objects.get(Email="ravinikam00786@gmail.com") # Complex Data type Emp_obj is 
+        Emp_obj = User.objects.get(Email=email) # Complex Data type Emp_obj is 
         print("XYZ",Emp_obj)
         Emp_serializer=profile_serializer(Emp_obj)  # Convert to Python Data type serializer
         return Response(Emp_serializer.data, status=status.HTTP_200_OK)
