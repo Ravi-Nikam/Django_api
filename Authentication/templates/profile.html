@@ -16,7 +16,7 @@
               </div>
             </div>
           </div>
-          
+          {{res}}
         {% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
@@ -55,7 +55,7 @@
                                 id="firstName"
                                 class="form-control form-control-lg"
                                 name="Fname"
-                                value="{{user_profile.First_Name}}"
+                                value="{{res.first_name}}"
                               />
                               <label class="form-label" for="firstName"
                                 >First Name</label
@@ -69,7 +69,7 @@
                                 id="lastName"
                                 class="form-control form-control-lg"
                                 name="Lname"
-                                value="{{user_profile.Last_Name}}"
+                                value="{{res.last_name}}"
                               />
                               <label class="form-label" for="lastName"
                                 >Last Name</label
@@ -89,7 +89,7 @@
                                 name="Gender"
                                 id="femaleGender"
                                 value="Female"
-                                {% if user_profile.Gender == 'F' %} checked{% endif %}
+                                {% if res.Gender == 'F' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="femaleGender"
                                 >Female</label
@@ -102,7 +102,7 @@
                                 name="Gender"
                                 id="maleGender"
                                 value="Male"
-                                {% if user_profile.Gender == 'M' %} checked{% endif %}
+                                {% if res.Gender == 'M' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="maleGender"
                                 >Male</label
@@ -116,7 +116,7 @@
                                 name="Gender"
                                 id="otherGender"
                                 value="Other"
-                                {% if user_profile.Gender == 'X' %} checked {% endif %}
+                                {% if res.Gender == 'X' %} checked {% endif %}
                               />
                               <label class="form-check-label" for="otherGender"
                                 >Other</label
@@ -152,7 +152,7 @@
                                 id="emailAddress"
                                 class="form-control form-control-lg"
                                 name="Mail"
-                                value="{{user_profile.Email }}"
+                                value="{{res.email }}"
                                 disabled
                               />
                               <label class="form-label" for="emailAddress"
@@ -191,7 +191,7 @@
                                 class="form-control form-control-lg"
                                 name="MobileNumber"
                                 onfocusout="mobilecheck()"
-                                value="{{user_profile.Phone_Number}}"
+                                value="{{res.phone_number}}"
                               />
                               <label class="form-label" for="phoneNumber"
                                 >Phone Number</label
@@ -216,9 +216,6 @@
                               >
                             </div>
                           </div>
-                        
-                        
-
                         <div class="mt-4 pt-2">
                           <input
                             class="btn btn-primary btn-lg"

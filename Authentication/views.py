@@ -126,8 +126,12 @@ def login(request):
         print("****************========>",data['emp']['Email'])
         if res.status_code == 200:
             try:
-                request.session['mail']=data['emp']['Email']
-                print("------------------------------------------->>>",request.session.get('mail'))
+                try:
+                    session_mail = data['emp']['Email']
+                    request.session['user_email']= session_mail
+                    print("------------------------------------------->>>",request.session.get('user_email'))
+                except Exception as e:
+                    print("token stored",e)
                 response_data = res.json()
                 if 'message' in response_data and response_data['message'] == 'Login successful!':
                     # Login successful, redirect to desired page (e.g., 'index')
@@ -195,8 +199,6 @@ def login_api(request):
         print(e)
         return Response(serializer.errors)
 
-from django.conf import settings
-import jwt
 
 def Profile(request):
     permission_classes = [IsAuthenticated]
@@ -207,22 +209,21 @@ def Profile(request):
         # Decode the token using UntypedToken
         token_verify=UntypedToken(token)
         print("here is my token 22",token_verify)
-        print("session",request.session['mail'])
+        print("session",request.session['user_email'])
+        
         if token_verify:
-            # Employee.objects.filter(Email=Email)   
-            # User_info=User.objects.get(Email=request.session.get('mail'))
-            # print(User_info.Email)
-            # x=User_info.Email
-            # print("/////////////////////",type(x))
             try:
                 BASEURL = "http://127.0.0.1:8000/"
                 ENDPOINT ='get_profile_details/'
                 # Headers for the request
+                data = {
+                    'mail' : request.session['user_email']
+                }
                 headers = {
                     'Content-Type': 'application/json',
                     'Authorization': f'Bearer {token}'
                 }
-                resp = requests.get(BASEURL + ENDPOINT,headers=headers)
+                resp = requests.post(BASEURL + ENDPOINT, json.dumps(data),headers=headers)
                 print("Response status code:", resp.status_code)
                 print("Response text:", resp.text)
             except jwt.ExpiredSignatureError:
@@ -236,8 +237,8 @@ def Profile(request):
                 
             if resp.status_code == 200:
                 print("DONE")
-                print("Response text:", resp.text)
-                return JsonResponse({'detail': 'Unknown error occurred'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                # print("Response text:", resp.text)
+                return render(request,'profile.html',{"res":resp.json()})
             
         if request.method == 'POST':
             print("Called")
@@ -254,42 +255,25 @@ def Profile(request):
                 'Gender': Gender
             }
             print("]]]",data)
-            # try:
-            #     BASEURL = "http://127.0.0.1:8000/" 
-            #     ENDPOINT ='profile_api/'
-                
-            #     headers = {'Content-Type': 'application/json'}
-            #     response = requests.post(BASEURL + ENDPOINT, json.dumps(data),headers=headers)
-            # except Exception as e:
-            #     print("Showing Error",e)
-            #     return render(request,'profile.html')
     except (InvalidToken, TokenError) as e:
         print("ERROR",e)
         return redirect('login')
     return render(request,'profile.html')
 
-import logging
-
-logger = logging.getLogger(__name__)
 
 @api_view(['GET','POST'])
 @permission_classes([IsAuthenticated])
 def get_profile_details(request):
     # return Response({"message": "Hello, world!"}, status=status.HTTP_200_OK)
     try:
-        print("---->")
-        try:
-            email = request.session.get('mail')
-        except Exception as e:
-            print("erroorrr",e)
-        print("**************",email)
-        Emp_obj = User.objects.get(Email=email) # Complex Data type Emp_obj is 
-        print("XYZ",Emp_obj)
-        Emp_serializer=profile_serializer(Emp_obj)  # Convert to Python Data type serializer
+        print("---->",request.data)
+        print("***********",request.data['mail'])
+        User_obj = User.objects.get(email=request.data['mail']) # Complex Data type Emp_obj is 
+        print("XYZ",User_obj)
+        Emp_serializer=profile_serializer(User_obj)  # Convert to Python Data type serializer
+        
         return Response(Emp_serializer.data, status=status.HTTP_200_OK)
     except Employee.DoesNotExist:
-        # logger.warning("User not found")
-        # return Response({"detail": "User not found", "code": "user_not_found"}, status=status.HTTP_404_NOT_FOUND)
         return None
     except Exception as e:
         logger.error(f"An error occurred: {e}")

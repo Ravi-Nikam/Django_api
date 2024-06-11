@@ -70,8 +70,13 @@ class LoginSerializers(serializers.Serializer):
 
 class profile_serializer(serializers.ModelSerializer):
     class Meta:
-        model = Employee
-        fields = ["First_Name","Last_Name","Email","Phone_Number","Gender"]
+        model = User
+        fields = ["phone_number",
+                "email",
+                "dob",
+                "Gender",
+                "first_name",
+                "last_name"]
 
 
 # class LoginSerializers(serializers.ModelSerializer):
