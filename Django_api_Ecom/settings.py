@@ -38,8 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+<<<<<<< HEAD
     # 'Admin',
     'Authentication',
+=======
+    'Admin',
+>>>>>>> origin/master
     'rest_framework_simplejwt'
 ]
 
@@ -151,7 +155,11 @@ REST_FRAMEWORK = {
 from datetime import timedelta
 
 SIMPLE_JWT = {
+<<<<<<< HEAD
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+=======
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+>>>>>>> origin/master
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': True,
@@ -177,6 +185,10 @@ SIMPLE_JWT = {
 }
 
 
+<<<<<<< HEAD
 AUTH_USER_MODEL = 'Authentication.User'
+=======
+AUTH_USER_MODEL = 'Admin.User'
+>>>>>>> origin/master
 
 
