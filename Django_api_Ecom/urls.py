@@ -26,14 +26,8 @@ from rest_framework_simplejwt.views import (
 )
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     # path('',include('Admin.urls')),
     path('', include('Authentication.urls')),
-    
-=======
-    path('',include('Admin.urls')),
->>>>>>> origin/master
-    
     # JWT URL
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

@@ -12,7 +12,7 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 import json
 from .models import Employee
-from .serializers import EmpSerializers,LoginSerializers,profile_serializer
+from .serializers import EmpSerializers,LoginSerializers,profile_serializer,edit_profile_serializer
 from django.contrib.auth import authenticate
 # Create your views here.
 
@@ -203,14 +203,50 @@ def login_api(request):
 def Profile(request):
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication] 
+    print("session",request.session['user_email'])
     token=request.COOKIES.get('jwt')
+    # Decode the token using UntypedToken
+    token_verify=UntypedToken(token)
+    print("here is my token 22",token_verify)
     print("here is my token",token)
+    
+    if request.method == 'POST':    
+        print("Called")
+        first_name = request.POST['Fname']
+        last_name = request.POST['Lname']
+        Phone_Number = request.POST['MobileNumber']
+        # Email = request.POST['user_mail']
+        Gender = request.POST['Gender']
+        print("===>",first_name,last_name,Gender,Phone_Number)
+        # data = {
+        #     'First_Name': first_name,
+        #     'Last_Name': last_name,
+        #     'Phone_Number': Phone_Number,
+        #     'Gender': Gender
+        # }
+        data = {
+                    'First_Name': first_name,
+                    'Last_Name': last_name,
+                    'Phone_Number': Phone_Number,
+                    'Gender': Gender,
+                    'mail' : request.session['user_email']
+                }
+        if token_verify:
+            try:
+                BASEURL = "http://127.0.0.1:8000/"
+                ENDPOINT ='Edit_profile_details/'
+                print("TOKEN",token)
+                # Headers for the request
+                headers = {
+                    'Content-Type': 'application/json',
+                    'Authorization': f'Bearer {token}'
+                }
+                resp = requests.post(BASEURL + ENDPOINT, json.dumps(data),headers=headers)
+                print("Response status code:", resp.status_code)
+            except jwt.ExpiredSignatureError:
+                print("Token has expired")
+            print("====>",data)
     try:
-        # Decode the token using UntypedToken
-        token_verify=UntypedToken(token)
-        print("here is my token 22",token_verify)
-        print("session",request.session['user_email'])
-        
         if token_verify:
             try:
                 BASEURL = "http://127.0.0.1:8000/"
@@ -239,22 +275,6 @@ def Profile(request):
                 print("DONE")
                 # print("Response text:", resp.text)
                 return render(request,'profile.html',{"res":resp.json()})
-            
-        if request.method == 'POST':
-            print("Called")
-            first_name = request.POST['Fname']
-            last_name = request.POST['Lname']
-            Phone_Number = request.POST['MobileNumber']
-            Email = request.POST['Email']
-            Gender = request.POST['Gender']
-            print("===>",first_name,last_name,Gender,Phone_Number,Email)
-            data = {
-                'First_Name': first_name,
-                'Last_Name': last_name,
-                'Phone_Number': Phone_Number,
-                'Gender': Gender
-            }
-            print("]]]",data)
     except (InvalidToken, TokenError) as e:
         print("ERROR",e)
         return redirect('login')
@@ -262,7 +282,7 @@ def Profile(request):
 
 
 @api_view(['GET','POST'])
-@permission_classes([IsAuthenticated])
+# @permission_classes([IsAuthenticated])
 def get_profile_details(request):
     # return Response({"message": "Hello, world!"}, status=status.HTTP_200_OK)
     try:
@@ -279,10 +299,20 @@ def get_profile_details(request):
         logger.error(f"An error occurred: {e}")
         return Response({"detail": "Unknown error occurred", "code": "unknown_error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-    
 
-# @api_view(['POST'])
-# def profile_api(request):
-#     data = request.data
-#     print("------------------------------------>",data)
-#     print(type(request.data))
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def Edit_profile_details(request):
+    print("                                   ",request.data)
+    mail_user_info=User.objects.get(email=request.data['mail'])
+    print("=1=1=1=1=1=1=",mail_user_info)
+    try:
+        user_details=edit_profile_serializer(instance=mail_user_info,data=request.data,partial=True)
+        print("=========>>>>>>>>>>",user_details)
+        if user_details.is_valid():
+            print("======================================================================")
+            user_details.save()
+    except Exception as e:
+        print("MAil user information == >",e)
+        
+    return Response({"message": "Profile updated successfully"}, status=status.HTTP_200_OK)
