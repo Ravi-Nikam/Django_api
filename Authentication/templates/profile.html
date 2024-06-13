@@ -78,19 +78,32 @@
                             </div>
                           </div>
                         </div>
-
+                        <div class="form-outline datepicker w-100">
+                          <input
+                            type="text"
+                            class="form-control form-control-lg"
+                            id="birthdayDate"
+                            name="Dob"
+                            onfocusout="check_dob()"
+                            value={{res.dob}}
+                          />
+                          <label for="birthdayDate" class="form-label"
+                            >Birthday Must Be in DD-MM-YYYY</label
+                          >
+                          <span id="msg"></span>
+                        </div>
+                        <br>
                         <div class="row">
-
-                          <div class="col-md-6 mb-4">
-                            <h6 class="mb-2 pb-1">Gender:</h6>
-                            <div class="form-check form-check-inline">
+                          <div class="col-md-8 mb-4">
+                            <h6 class="mb-2 pb-1"> Gender:</h6>
+                            <div class="form-check form-check-inline" style="margin: 5px;">
                               <input
                                 class="form-check-input"
                                 type="radio"
                                 name="Gender"
                                 id="femaleGender"
-                                value="Female"
-                                {% if res.Gender == 'F' %} checked{% endif %}
+                                value="F"
+                                {% if res.gender == 'F' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="femaleGender"
                                 >Female</label
@@ -102,8 +115,8 @@
                                 type="radio"
                                 name="Gender"
                                 id="maleGender"
-                                value="Male"
-                                {% if res.Gender == 'M' %} checked{% endif %}
+                                value="M"
+                                {% if res.gender == 'M' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="maleGender"
                                 >Male</label
@@ -116,8 +129,8 @@
                                 type="radio"
                                 name="Gender"
                                 id="otherGender"
-                                value="Other"
-                                {% if res.Gender == 'X' %} checked {% endif %}
+                                value="X"
+                                {% if res.gender == 'X' %} checked{% endif %}
                               />
                               <label class="form-check-label" for="otherGender"
                                 >Other</label

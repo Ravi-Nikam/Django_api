@@ -218,17 +218,11 @@ def Profile(request):
         # Email = request.POST['user_mail']
         Gender = request.POST['Gender']
         print("===>",first_name,last_name,Gender,Phone_Number)
-        # data = {
-        #     'First_Name': first_name,
-        #     'Last_Name': last_name,
-        #     'Phone_Number': Phone_Number,
-        #     'Gender': Gender
-        # }
         data = {
-                    'First_Name': first_name,
-                    'Last_Name': last_name,
-                    'Phone_Number': Phone_Number,
-                    'Gender': Gender,
+                    'first_name': first_name,
+                    'last_name': last_name,
+                    'phone_number': Phone_Number,
+                    'gender': Gender,
                     'mail' : request.session['user_email']
                 }
         if token_verify:
@@ -310,8 +304,12 @@ def Edit_profile_details(request):
         user_details=edit_profile_serializer(instance=mail_user_info,data=request.data,partial=True)
         print("=========>>>>>>>>>>",user_details)
         if user_details.is_valid():
-            print("======================================================================")
+            print("Data is valid")
             user_details.save()
+            return Response({"message": "Profile updated successfully"}, status=status.HTTP_200_OK)
+        else:
+            print("Validation errors:", user_details.errors)
+            return Response(user_details.errors, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
         print("MAil user information == >",e)
         

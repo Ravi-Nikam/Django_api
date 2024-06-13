@@ -18,7 +18,7 @@ class User(AbstractBaseUser):
     phone_number  = models.IntegerField(null=True)
     email = models.EmailField(unique=True)
     dob = models.CharField(max_length=10)
-    Gender = models.CharField(max_length=1,choices=[('M', 'Male'), ('F', 'Female'),('X', 'Other')])
+    gender = models.CharField(max_length=1,choices=[('M', 'Male'), ('F', 'Female'),('X', 'Other')])
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     
@@ -33,7 +33,7 @@ class User(AbstractBaseUser):
     
     
     USERNAME_FIELD = 'email'  # MEANS PHONE NUMBER IS WORK AS A username
-    REQUIRED_FIELDS = ['first_name','last_name','Gender','phone_number',"dob"]
+    REQUIRED_FIELDS = ['first_name','last_name','gender','phone_number',"dob"]
     # REQUIRED_FIELDS = []
     
     print("4***************************")
@@ -49,6 +49,12 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
+    def print_user_model_fields():
+        user = User()
+        for field in user._meta.get_fields():
+            print(field.name)
+
+        print_user_model_fields()
 
 
 class Employee(models.Model):

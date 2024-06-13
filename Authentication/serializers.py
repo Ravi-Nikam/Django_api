@@ -64,14 +64,14 @@ class LoginSerializers(serializers.Serializer):
         #     raise serializers.ValidationError("Invalid email or password.")
         return attrs
     
-
+# view profile details
 class profile_serializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["phone_number",
                 "email",
                 "dob",
-                "Gender",
+                "gender",
                 "first_name",
                 "last_name"]
 
@@ -79,42 +79,41 @@ class profile_serializer(serializers.ModelSerializer):
 class edit_profile_serializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["phone_number","email","dob","Gender","first_name","last_name"]
+        fields = ["phone_number","email","dob","gender","first_name","last_name"]
         print("CALLAED1")
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        print("Serializer fields:", self.fields)
         
     def update(self,instance,validated_data):
         print("CALLAED2")
         try:
+            print("Update data:", validated_data)
             print("//////////////////////UPDATE DATA",validated_data)
-            print("***********",instance)
-            instance.phone_number = validated_data.get('phone_number', instance.phone_number)
-            instance.email = validated_data.get('email', instance.email)
-            instance.dob = validated_data.get('dob', instance.dob)
-            instance.Gender = validated_data.get('Gender', instance.Gender)
-            instance.first_name = validated_data.get('first_name', instance.first_name)
-            instance.last_name = validated_data.get('last_name', instance.last_name)
+            print("***********",instance.phone_number)
+            # Ensure that the field name in the request.data dictionary is exactly "phone_number"
+            # instance.phone number is a phonenumber which is in Database data 
+            # first value is same as the data dict fields key which pass or send through api 
+            # phone_number field is same as's key (with help of it user can take the form value ) and instance  data { key : value}
+            try:
+                instance.phone_number = validated_data.get('phone_number',instance.phone_number)
+                print("----------instance phone number------------>>",instance.phone_number)
+                print("----------instance phone number------------>>",validated_data.get('phone_number'))
+                instance.email = validated_data.get('email', instance.email)
+                instance.dob = validated_data.get('dob', instance.dob) 
+                instance.gender = validated_data.get('gender', instance.gender)
+                instance.first_name = validated_data.get('first_name', instance.first_name)
+                instance.last_name = validated_data.get('last_name', instance.last_name)
+            except Exception as e:
+                print("ERRRRRORRRRRR ++++++++++++++++++",e)
             instance.save()
             return instance
         except Exception as e:
             print("Maybe some error instance ",e)
     
         
-        # def update(self, instance, validated_data):
-        # user_data = validated_data.pop('user')
-        # user = instance.user
-
-        # instance.phone_number = validated_data.get('phone_number', instance.phone_number)
-        # instance.dob = validated_data.get('dob', instance.dob)
-        # instance.gender = validated_data.get('gender', instance.gender)
-        # instance.bio = validated_data.get('bio', instance.bio)
-        # instance.location = validated_data.get('location', instance.location)
-        # instance.save()
-
-        # user.first_name = user_data.get('first_name', user.first_name)
-        # user.last_name = user_data.get('last_name', user.last_name)
-        # user.email = user_data.get('email', user.email)
-        # user.save()
-
+       
 
 
 
@@ -127,6 +126,7 @@ class edit_profile_serializer(serializers.ModelSerializer):
 #         email = data.get('Email')
 #         password = data.get('Password')
 #         print(email,password)
+
 #         try:
 #             employee = Employee.objects.get(Email=email)
 #         except Employee.DoesNotExist:
