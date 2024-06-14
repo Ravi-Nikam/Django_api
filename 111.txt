@@ -998,3 +998,1003 @@
  1149  git add .
  1150  git status
  1151  history >> 111.txt
+  263  cd DJ_Ecom/
+  264  clear
+  265  ls
+  266  cd Django_api_Ecom/
+  267  clear
+  268  ls
+  269  source api_dev/bin/activate
+  270  lcear
+  271  clear
+  272  cd ..
+  273  ls
+  274  clear
+  275  ls
+  276  cd Dj
+  277  cd Dj_com/
+  278  clear
+  279  ls
+  280  cd ,,
+  281  cd ..
+  282  clear
+  283  ls
+  284  cd Django_api_Ecom/
+  285  clear
+  286  ls
+  287  cleatr
+  288  clear
+  289  python manage.py runserver
+  290  clear
+  291  python manage.py runserver
+  292  clear
+  293  python manage.py runserver
+  294  clear
+  295  python manage.py runserver
+  296  clear
+  297  python manage.py runserver
+  298  clear
+  299  python manage.py runserver
+  300  clear
+  301  python manage.py runserver
+  302  clear
+  303  python manage.py runserver
+  304  clear
+  305  python manage.py runserver
+  306  clear
+  307  python manage.py runserver
+  308  clear
+  309  python manage.py runserver
+  310  clear
+  311  python manage.py runserver
+  312  clear
+  313  python manage.py runserver
+  314  clear
+  315  python manage.py runserver
+  316  clear
+  317  python manage.py runserver
+  318  clear
+  319  python manage.py runserver
+  320  clear
+  321  python manage.py runserver
+  322  clear
+  323  python manage.py runserver
+  324  clear
+  325  python manage.py runserver
+  326  clear
+  327  python manage.py runserver
+  328  [200~sudo apt-get update~
+  329  sudo apt-get update
+  330  sudo apt-get install sublime-text
+  331  clear
+  332  wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+  333  echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+  334  echo "deb https://download.sublimetext.com/ apt/dev/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+  335  clear
+  336  cd Downloads/Win_Data/
+  337  dir
+  338  cd DJ_Ecom/
+  339  clear
+  340  ls
+  341  cd Django_api_Ecom/
+  342  ls
+  343  source api_dev/bin/activate
+  344  clear
+  345  python manage.py runserver'
+  346  clear
+  347  python manage.py runserver'
+  348  python manage.py runserver
+  349  clear
+  350  python manage.py runserver
+  351  clear
+  352  python manage.py runserver
+  353  clear
+  354  python manage.py runserver
+  355  clear
+  356  python manage.py runserver
+  357  /bin/python3 /home/ravi/.vscode/extensions/ms-python.python-2024.6.0/python_files/printEnvVariablesToFile.py /home/ravi/.vscode/extensions/ms-python.python-2024.6.0/python_files/deactivate/bash/envVars.txt
+  358  cd Downloads/Win_Data/DJ_Ecom/ls
+  359  cd Downloads/Win_Data/DJ_Ecom/
+  360  ls
+  361  cd Django_api_Ecom/
+  362  clear
+  363  ls
+  364  clear
+  365  ls
+  366  cd api_dev/
+  367  cd bin/ac
+  368  clear
+  369  ls
+  370  cd bin/
+  371  source activate
+  372  cd ..
+  373  ls
+  374  clear
+  375  python manage.py runserver
+  376  clear
+  377  python manage.py runserver
+  378  clear
+  379  pip install djangorestframework-simplejwt
+  380  clear
+  381  python manage.py runserver
+  382  clear
+  383  python manage.py makemigrations
+  384  python manage.py migrate
+  385  python manage.py runserver
+  386  clear
+  387  python manage.py runserver
+  388  clear
+  389  python manage.py makemigrations
+  390  python manage.py migrate
+  391  clear
+  392  python manage.py runserver
+  393  clear
+  394  python manage.py runserver
+  395  clear
+  396  python manage.py runserver
+  397  clear
+  398  python manage.py runserver
+  399  cd Downloads/Win_Data/DJ_Ecom/
+  400  ls
+  401  cd Django_api_Ecom/
+  402  clear
+  403  ls
+  404  source api_dev/bin/activate
+  405  clear
+  406  ls
+  407  python manage.py runserver
+  408  /bin/python3 /home/ravi/.vscode/extensions/ms-python.python-2024.6.0/python_files/printEnvVariablesToFile.py /home/ravi/.vscode/extensions/ms-python.python-2024.6.0/python_files/deactivate/bash/envVars.txt
+  409  cd Downloads/Win_Data/DJ_Ecom/
+  410  ls
+  411  Django_api_Ecom/
+  412  ls
+  413  cd Django_api_Ecom/
+  414  ls
+  415  source api_dev/bin/activate
+  416  clear
+  417  python manage.py runserver
+  418  cd Downloads
+  419  ls
+  420  cd Win_Data/DJ_Ecom/
+  421  clear
+  422  ls
+  423  cd Django_api_Ecom/
+  424  clear
+  425  ls
+  426  source api_dev/bin/activate
+  427  clear
+  428  ls
+  429  clear
+  430  python manage.py runserver
+  431  clear
+  432  python manage.py runserver
+  433  clear
+  434  cd ~
+  435  cd Desktop/
+  436  python requests.py 
+  437  pip install requests
+  438  python requests.py 
+  439  python3 requests.py 
+  440  py3 requests.py 
+  441  clear
+  442  cd ..
+  443  l
+  444  cd Downloads/Win_Data/
+  445  clear
+  446  ;s
+  447  ls
+  448  cd DJ_Ecom/Django_api_Ecom/
+  449  clear
+  450  ls
+  451  source api_dev/bin/activate
+  452  clear
+  453  python manage.py runserver
+  454  clear
+  455  python manage.py runserver
+  456  clear
+  457  python manage.py runserver
+  458  clear
+  459  python manage.py runserver
+  460  clear
+  461  python manage.py runserver
+  462  clear
+  463  python manage.py runserver
+  464  cd ~
+  465  ls
+  466  cd Desktop/
+  467  python requests.py 
+  468  python3 requests.py 
+  469  pip install requrequests
+  470  sudo apt-get clean
+  471  sudo apt-get autoclean
+  472  sudo apt-get clean
+  473  /bin/python3
+  474  cd Downloads/Win_Data/DJ_Ecom/Django_api_Ecom/
+  475  ls
+  476  source api_dev/bin/activate
+  477  clear
+  478  ls
+  479  python manage.py runserver
+  480  cd ~
+  481  clear
+  482  cd Temp/Win_Data/
+  483  clear
+  484  cd Task-1/
+  485  ls
+  486  cd ..
+  487  cd .
+  488  cd ..
+  489  ls
+  490  clear
+  491  ls
+  492  cd ..
+  493  cd Temp
+  494  clear
+  495  cd DJ_Ecommerce_APP/
+  496  clear
+  497  ls
+  498  clear
+  499  ls
+  500  cd Django_api_Ecom/
+  501  clear
+  502  ls
+  503  clear
+  504  python manage.py runserver
+  505  ls
+  506  python manage.py runserver
+  507  deactivate
+  508  ls
+  509  source  api_dev/bin/activate
+  510  clear
+  511  python manage.py runserver
+  512  python3 manage.py runserver
+  513  pip install django
+  514  clear
+  515  pip install django
+  516  clear
+  517  python3 manage.py runserver
+  518  clear
+  519  pip install djangorestframework
+  520  clear
+  521  python3 manage.py runserver
+  522  pip install djangorestframework-simplejwt
+  523  clear
+  524  python3 manage.py runserver
+  525  clear
+  526  python manage.py createsuperuser
+  527  python3 manage.py createsuperuser
+  528  clear
+  529  python3 manage.py createsuperuser
+  530  clear
+  531  python manage.py runserver
+  532  python3 manage.py runserver
+  533  clear
+  534  python3 manage.py runserver
+  535  clear
+  536  python3 manage.py runserver
+  537  ls
+  538  cd Downloads/
+  539  ls
+  540  clear
+  541  cd ..
+  542  cd Temp
+  543  cls
+  544  clear
+  545  ls
+  546  cd Win_Data/
+  547  cls
+  548  clear
+  549  ls
+  550  cd ..
+  551  ls
+  552  cd DJ_Ecommerce_APP/
+  553  clear
+  554  ;s
+  555  ls
+  556  clear
+  557  cd Django_api_Ecom/
+  558  ls
+  559  source api_dev/bin/activate
+  560  clear
+  561  ls
+  562  clear
+  563  python manage.py runserver
+  564  python3 manage.py runserver
+  565  clear
+  566  python3 manage.py runserver
+  567  clear
+  568  python3 manage.py runserver
+  569  clear
+  570  python3 manage.py runserver
+  571  curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+  572  sudo snap install postman
+  573  cd ..
+  574  cd..
+  575  cd ..
+  576  ;s
+  577  cd ..
+  578  cls
+  579  cleat
+  580  clear
+  581  ls
+  582  cd anaconda3
+  583  ls
+  584  cd bin
+  585  ls
+  586  source activate
+  587  clear
+  588  cd ..
+  589  c ..
+  590  cd ..
+  591  clear
+  592  deactivate
+  593  conda deactivate
+  594  clear
+  595  cd Temp/Win_Data/Task-1/
+  596  clear
+  597  ls
+  598  source api/Scripts/activate
+  599  clear
+  600  ls
+  601  clear
+  602  cd Django_project/
+  603  clear
+  604  ls
+  605  clear
+  606  python manage.py runserver
+  607  python3 manage.py runserver
+  608  python3 manage.py runserver 5000
+  609  cd Temp/DJ_Ecommerce_APP/Django_api_Ecom/
+  610  ls
+  611  api_dev/bin/activate
+  612  source api_dev/bin/activate
+  613  clear
+  614  ls
+  615  python manage.py runserver
+  616  python3 manage.py runserver
+  617  clear
+  618  python3 manage.py runserver
+  619  clear
+  620  python3 manage.py runserver
+  621  clear
+  622  python3 manage.py runserver
+  623  clear
+  624  python3 manage.py runserver
+  625  clear
+  626  python3 manage.py runserver
+  627  clear
+  628  python3 manage.py runserver
+  629  clear
+  630  python3 manage.py runserver
+  631  /home/ravi/Temp/DJ_Ecommerce_APP/Django_api_Ecom/.venv/bin/python
+  632  cd Downloads/
+  633  cd ..
+  634  cd Temp
+  635  ls
+  636  cd DJ_Ecommerce_APP/
+  637  ls
+  638  cd  Django_api_Ecom/
+  639  clear
+  640  ls
+  641  clear
+  642  source api_dev/bin/activate
+  643  clear
+  644  python manage.py runserver
+  645  clear
+  646  python3 manage.py runserver
+  647  python manage.py makemigrations
+  648  python3 manage.py makemigrations
+  649  python3 manage.py migrate
+  650  python manage.py runserver
+  651  python3 manage.py runserver
+  652  clear
+  653  python3 manage.py runserver
+  654  clear
+  655  python3 manage.py runserver
+  656  ls
+  657  clear
+  658  git init .
+  659  sudo apt install git
+  660  git init .
+  661  ls
+  662  git add README.md
+  663  git commit -m "first commit"
+  664  git config --global user.email "ravinikam0999@gmail.com"
+  665  git config --global user.name Ravi-Nikam
+  666  git commit -m "first commit"
+  667  git add .
+  668  git status
+  669  git commit -m "Initial commit with project files"
+  670  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+  671  git push -u origin master
+  672  git config --unset-all credential.helper
+  673  git config --global credential.helper store
+  674  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+  675  git push -u origin master
+  676  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
+  677  anaconda-navigator
+  678  cleatr
+  679  clear
+  680  source  anaconda3/bin/activate
+  681  clear
+  682  anaconda-navigator
+  683  cleatr
+  684  clear
+  685  git
+  686  clear
+  687  git
+  688  git push -u
+  689  ls
+  690  cd temp
+  691  cd Temp
+  692  ls
+  693  cd DJ_Ecommerce_APP/Django_api_Ecom/
+  694  ls
+  695  clear
+  696  ls
+  697  git push
+  698  git config --global user.password
+  699  git config --global user.password "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"
+  700  git push
+  701  git status
+  702  git add .
+  703  git status
+  704  git commit -m "custom_registration"
+  705  git push origin
+  706  git status
+  707  cd Downloads/
+  708  ls
+  709  cd ..
+  710  ls
+  711  clear
+  712  cd Temp
+  713  clear
+  714  ls
+  715  clear
+  716  cd DJ_Ecommerce_APP/
+  717  cd Django_api_Ecom/
+  718  clear
+  719  ls
+  720  api_dev/bin/activate
+  721  source api_dev/bin/activate
+  722  cler
+  723  clear
+  724  ls
+  725  clear
+  726  python manage.py runserver
+  727  python3 manage.py runserver
+  728  clear
+  729  python3 manage.py runserver
+  730  clear
+  731  python manage.py makemigrations
+  732  python3 manage.py makemigrations
+  733  python manage.py migrate
+  734  python3 manage.py migrate
+  735  clear
+  736  python3 manage.py migrate auth zero
+  737  Python3 manage.py migrate auth zero
+  738  python manage.py migrate auth zero
+  739  python3 manage.py migrate 
+  740  python manage.py migrate auth
+  741  python3 manage.py migrate auth
+  742  clear
+  743  python3 manage.py migrations
+  744  python3 manage.py makemigrations
+  745  clear
+  746  python3 manage.py makemigrations
+  747  clear
+  748  python3 manage.py makemigrations
+  749  cleare
+  750  clear
+  751  cleare
+  752  python3 manage.py makemigrations
+  753  clear
+  754  python3 manage.py makemigrations
+  755  python3 manage.py migrate
+  756  python3 manage.py runserver
+  757  python3 manage.py createsuperuser
+  758  py manage.py migrate
+  759  python3 manage.py makemigrations
+  760  python3 manage.py migrate
+  761  clear
+  762  python3 manage.py makemigrations
+  763  python3 manage.py migrate
+  764  clear
+  765  python3 manage.py migrate
+  766  clear
+  767  python3 manage.py makemigrations
+  768  python3 manage.py migrate
+  769  clear
+  770  python3 manage.py makemigrations
+  771  clear
+  772  python3 manage.py makemigrations
+  773  python3 manage.py migrate
+  774  python3 manage.py makemigrations
+  775  python3 manage.py migrate
+  776  python3 manage.py runserver
+  777  python3 manage.py createsuperuser
+  778  python3 manage.py makemigrations
+  779  python3 manage.py migrate
+  780  python3 manage.py createsuperuser
+  781  python3 manage.py makemigrations
+  782  python3 manage.py migrate
+  783  python3 manage.py createsuperuser
+  784  python3 manage.py makemigrations
+  785  python3 manage.py migrate
+  786  python3 manage.py createsuperuser
+  787  clear
+  788  python3 manage.py makemigrations
+  789  python3 manage.py migrate
+  790  python3 manage.py createsuperuser
+  791  python3 manage.py makemigrations
+  792  python3 manage.py migrate
+  793  python3 manage.py createsuperuser
+  794  python3 manage.py makemigrations
+  795  python3 manage.py migrate
+  796  python3 manage.py createsuperuser
+  797  python manage.py makemigrations Admin
+  798  python3 manage.py makemigrations Admin
+  799  python3 manage.py migrate
+  800  clear
+  801  python3 manage.py makemigrations Admin
+  802  python3 manage.py migrate
+  803  python3 manage.py createsuperuser
+  804  python3 manage.py runserver
+  805  python3 manage.py makemigrations Admin
+  806  python3 manage.py migrate
+  807  python3 manage.py createsuperuser
+  808  python3 manage.py runserver
+  809  clear
+  810  python3 manage.py makemigrations
+  811  python3 manage.py migrate
+  812  python3 manage.py runserver
+  813  python3 manage.py makemigrations Admin
+  814  clear
+  815  python3 manage.py runserver
+  816  /home/ravi/Temp/DJ_Ecommerce_APP/Django_api_Ecom/.venv/bin/python
+  817  conda createenv dev
+  818  clear
+  819  virtualenv env
+  820  clear
+  821  ls
+  822  source env/bin/activate
+  823  clear
+  824  pip install Django
+  825  django-admin startproject demo
+  826  ls
+  827  cd demo/
+  828  clear
+  829  ls
+  830  python manage.py runserver
+  831  python manage.py runserver 5000
+  832  clear
+  833  python manage.py makemigrations
+  834  python manage.py migrate
+  835  clear
+  836  python manage.py runserver 5000
+  837  clear
+  838  python manage.py createsuperuser
+  839  python manage.py runserver
+  840  python manage.py runserver 5000
+  841  cclear
+  842  clear
+  843  python mange.py migrate
+  844  python manage.py migrate
+  845  git push
+  846  git add .
+  847  git init 
+  848  git add .
+  849  git commit "third change"
+  850  git status
+  851  git config --global user.name
+  852  git add .
+  853  git commit -m "third change"
+  854  git push origin
+  855  git status
+  856  git add .
+  857  git status
+  858  git commit -m "forth change"
+  859  git push origin
+  860  git status
+  861  git logout
+  862  exit
+  863  C:
+  864  cd ~
+  865  cls
+  866  clear
+  867  ls
+  868  clear
+  869  cd Downloads/
+  870  cls
+  871  clear
+  872  unzip api_demo-master.zip 
+  873  cls
+  874  clear
+  875  python manage.py runserver
+  876  cls
+  877  clear
+  878  python3 manage.py runserver
+  879  cd api_demo-master/
+  880  cls
+  881  clear
+  882  python3 manage.py runserver
+  883  cd anaconda3/bin/activate
+  884  source anaconda3/bin/activate
+  885  jupyter-notebook
+  886  clear
+  887  deactivate
+  888  source deactivate
+  889  clear
+  890  cd Temp/DJ_Ecommerce_APP/Django_api_Ecom/
+  891  ls
+  892  clear
+  893  api_dev/bin/activate
+  894  source api_dev/bin/activate
+  895  clear
+  896  python3 manage.py runserver
+  897  clear
+  898  python3 manage.py makemigrations
+  899  python3 manage.py makemigrations Admin
+  900  python3 manage.py migrate
+  901  clear
+  902  python3 manage.py runserver
+  903  python3 manage.py createsuperuser
+  904  python3 manage.py runserver
+  905  python3 manage.py makemigrations Admin
+  906  python3 manage.py migrate
+  907  python3 manage.py runserver
+  908  clear
+  909  python3 manage.py makemigrations Admin
+  910  python3 manage.py migrate
+  911  python3 manage.py runserver
+  912  clear
+  913  python3 manage.py runserver
+  914  clear
+  915  python3 manage.py makemigrations Admin
+  916  python3 manage.py migrate
+  917  python3 manage.py runserver
+  918  python3 manage.py makemigrations Admin
+  919  python3 manage.py migrate
+  920  python3 manage.py runserver
+  921  clear
+  922  python3 manage.py makemigrations Admin
+  923  python3 manage.py migrate
+  924  python3 manage.py runserver
+  925  clear
+  926  python3 manage.py makemigrations Admin
+  927  python3 manage.py migrate
+  928  python3 manage.py 
+  929  clear
+  930  python3 manage.py createsuperuser
+  931  clear
+  932  python3 manage.py runserver
+  933  clear
+  934  python3 manage.py createsuperuser
+  935  python3 manage.py makemigrations Admin
+  936  python3 manage.py migrate
+  937  python3 manage.py createsuperuser
+  938  python3 manage.py makemigrations Admin
+  939  python3 manage.py migrate
+  940  python3 manage.py createsuperuser
+  941  clear
+  942  python3 manage.py createsuperuser
+  943  clear
+  944  python3 manage.py createsuperuser
+  945  clear
+  946  python3 manage.py createsuperuser
+  947  clear
+  948  python3 manage.py createsuperuser
+  949  clere
+  950  clear
+  951  python manage.py makemigrations
+  952  python3 manage.py makemigrations
+  953  python3 manage.py makemigrations Admin
+  954  clear
+  955  python3 manage.py migrate
+  956  clear
+  957  python3 manage.py createsuperuser
+  958  clear
+  959  python3 manage.py createsuperuser
+  960  clear
+  961  python3 manage.py createsuperuser
+  962  clear
+  963  python3 manage.py createsuperuser
+  964  python3 manage.py runserver
+  965  python3 manage.py makemigrations Admin
+  966  python3 manage.py migrate
+  967  python3 manage.py runserver
+  968  python3 manage.py createsuperuser
+  969  clear
+  970  python3 manage.py makemigrations
+  971  python3 manage.py makemigrations Admin
+  972  clear
+  973  python3 manage.py migrate
+  974  cleae
+  975  clear
+  976  python3 manage.py runserver
+  977  python3 manage.py createsuperuser
+  978  python3 manage.py makemigrations Admin
+  979  python3 manage.py migrate
+  980  python3 manage.py createsuperuser
+  981  clear
+  982  python3 manage.py createsuperuser
+  983  clear
+  984  python3 manage.py makemigrations Admin
+  985  python3 manage.py migrate
+  986  clear
+  987  python3 manage.py createsuperuser
+  988  python3 manage.py runserver
+  989  python3 manage.py createsuperuser
+  990  python3 manage.py runserver
+  991  clear
+  992  python3 manage.py createsuperuser
+  993  python3 manage.py runserver
+  994  python3 manage.py createsuperuser
+  995  python3 manage.py runserver
+  996  python3 manage.py createsuperuser
+  997  python3 manage.py runserver
+  998  clear
+  999  python3 manage.py makemigrations
+ 1000  python3 manage.py makemigrations Admin
+ 1001  clear
+ 1002  python3 manage.py makemigrations Admin
+ 1003  python3 manage.py migrate
+ 1004  python3 manage.py runserver
+ 1005  python3 manage.py createsuperuser
+ 1006  python3 manage.py runserver
+ 1007  python3 manage.py createsuperuser
+ 1008  python3 manage.py runserver
+ 1009  clear
+ 1010  python3 manage.py makemigrations Admin
+ 1011  python3 manage.py migrate
+ 1012  clear
+ 1013  python manage.py createsuperuser
+ 1014  python3 manage.py createsuperuser
+ 1015  python3 manage.py runserver
+ 1016  python3 manage.py createsuperuser
+ 1017  python3 manage.py runserver
+ 1018  clear
+ 1019  python3 manage.py makemigrations Admin
+ 1020  clear
+ 1021  python3 manage.py runserver
+ 1022  clear
+ 1023  python3 manage.py makemigrations Admin
+ 1024  python3 manage.py migrate
+ 1025  clear
+ 1026  python3 manage.py runserver
+ 1027  clear
+ 1028  python3 manage.py runserver
+ 1029  cleare
+ 1030  clear
+ 1031  python3 manage.py makemigrations
+ 1032  python3 manage.py makemigrations Admin
+ 1033  python3 manage.py migrate
+ 1034  clear
+ 1035  python3 manage.py runserver
+ 1036  python3 manage.py createsuperuser
+ 1037  python manage.py dbshell
+ 1038  python3 manage.py dbshell
+ 1039  python manage.py shell
+ 1040  python3 manage.py shell
+ 1041  python3 manage.py dbshell
+ 1042  clear
+ 1043  python3 manage.py createsuperuser
+ 1044  python3 manage.py runserver
+ 1045  python3 manage.py makemigrations Admin
+ 1046  python3 manage.py migrate
+ 1047  python3 manage.py runserver
+ 1048  python3 manage.py createsuperuser
+ 1049  python3 manage.py runserver
+ 1050  python3 manage.py makemigrations Admin
+ 1051  python3 manage.py migrate
+ 1052  python3 manage.py createsuperuser
+ 1053  python3 manage.py runserver
+ 1054  clear
+ 1055  python3 manage.py createsuperuser
+ 1056  python3 manage.py runserver
+ 1057  python3 manage.py makemigrations Admin
+ 1058  python3 manage.py migrate
+ 1059  python3 manage.py runserver
+ 1060  python3 manage.py createsuperuser
+ 1061  python3 manage.py runserver
+ 1062  python3 manage.py createsuperuser
+ 1063  python3 manage.py runserver
+ 1064  clear
+ 1065  python3 manage.py createsuperuser
+ 1066  python3 manage.py runserver
+ 1067  clear
+ 1068  python manage.py shell
+ 1069  python3 manage.py shell
+ 1070  clear
+ 1071  python3 manage.py makemigrations Admin
+ 1072  python3 manage.py migrate
+ 1073  python3 manage.py createsuperuser
+ 1074  python3 manage.py shell
+ 1075  clear
+ 1076  python3 manage.py createsuperuser
+ 1077  python3 manage.py shell
+ 1078  cls
+ 1079  clear
+ 1080  ls
+ 1081  clear
+ 1082  python3 manage.py runserver
+ 1083  deactivate
+ 1084  clear
+ 1085  cd !
+ 1086  cd ~
+ 1087  clear
+ 1088  ;s
+ 1089  clear
+ 1090  ls
+ 1091  cd Downloads/
+ 1092  c;s
+ 1093  cls
+ 1094  clear
+ 1095  ls
+ 1096  cd api_demo-master/
+ 1097  clear
+ 1098  ls
+ 1099  api_demo/Scripts/activate
+ 1100  source api_demo/Scripts/activate
+ 1101  clear
+ 1102  python manage.py runserver
+ 1103  clear
+ 1104  python3 manage.py runserver
+ 1105  clear
+ 1106  python3 manage.py runserver
+ 1107  clear
+ 1108  python3 manage.py runserver
+ 1109  python3 manage.py shell
+ 1110  clear
+ 1111  python3 manage.py runserver
+ 1112  clear
+ 1113  python3 manage.py runserver
+ 1114  clear
+ 1115  python3 manage.py runserver
+ 1116  clear
+ 1117  python3 manage.py runserver
+ 1118  clear
+ 1119  python3 manage.py runserver
+ 1120  clear
+ 1121  git init .
+ 1122  git add .
+ 1123  git commit -m "Authrization"
+ 1124  git status
+ 1125  git push origin main
+ 1126  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+ 1127  git push origin main
+ 1128  git push -u origin main
+ 1129  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+ 1130  source api_demo/Scripts/activate
+ 1131  cls
+ 1132  clear
+ 1133  ls
+ 1134  deactivate
+ 1135  cls
+ 1136  clear
+ 1137  env list
+ 1138  clear
+ 1139  virtualenv list
+ 1140  api_demo/Scripts/activate
+ 1141  source api_demo/Scripts/activate
+ 1142  clear
+ 1143  python manage.py runservetr
+ 1144  python manage.py runserver
+ 1145  clear
+ 1146  python3 manage.py runserver
+ 1147  clear
+ 1148  ls
+ 1149  cd Downloads/
+ 1150  ls
+ 1151  cd api_demo-master/
+ 1152  clear
+ 1153  ls
+ 1154  clear
+ 1155  source api_demo/Scripts/activate
+ 1156  clear
+ 1157  python manage.py runserver 
+ 1158  python3 manage.py runserver 
+ 1159  clear
+ 1160  python3 manage.py runserver 
+ 1161  python manage.py shell
+ 1162  python3 manage.py shell
+ 1163  clear
+ 1164  python3 manage.py runserver
+ 1165  clear
+ 1166  python3 manage.py runserver
+ 1167  clear
+ 1168  python3 manage.py runserver
+ 1169  git init .
+ 1170  git add .
+ 1171  git status
+ 1172  history >> 111.txt
+ 1173  git commit -m "Register_login"
+ 1174  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+ 1175  git push -u origin master
+ 1176  git fetch origin
+ 1177  git merge origin/master
+ 1178  git merge origin/master --allow-unrelated-histories
+ 1179  git push origin master
+ 1180  git merge origin/master --allow-unrelated-histories
+ 1181  git add .
+ 1182  git commit -m "Merged unrelated histories"
+ 1183  git push origin master
+ 1184  git init
+ 1185  git add .
+ 1186  git status
+ 1187  git commit -m "first commit"
+ 1188  git branch -M main
+ 1189  git remote add origin https://github.com/Ravi-Nikam/Django_api.git
+ 1190  git push -u origin main
+ 1191  git remote add origin https://github.com/Ravi-Nikam/Django_api.git
+ 1192  git remote set-url origin https://github.com/Ravi-Nikam/Django_api.git
+ 1193  git push -u origin main
+ 1194  ls
+ 1195  cd Downloads/
+ 1196  ls
+ 1197  clear
+ 1198  ls
+ 1199  clear
+ 1200  cd api_demo-master/
+ 1201  clear
+ 1202  ls
+ 1203  clear
+ 1204  api_demo/Scripts/activate
+ 1205  source api_demo/Scripts/activate
+ 1206  clear
+ 1207  ls
+ 1208  clear
+ 1209  python3 manage.py runserver
+ 1210  cd Downloads/
+ 1211  ls
+ 1212  cd api_demo-master/
+ 1213  clear
+ 1214  ls
+ 1215  api_demo/
+ 1216  ls
+ 1217  clea
+ 1218  clear
+ 1219  ls
+ 1220  source api_demo/Scripts/activate
+ 1221  clear
+ 1222  python manage.py runserver
+ 1223  python3 manage.py runserver
+ 1224  clear
+ 1225  python3 manage.py runserver
+ 1226  clear
+ 1227  python3 manage.py runserver
+ 1228  clear
+ 1229  python3 manage.py runserver
+ 1230  ls
+ 1231  clear
+ 1232  git init .
+ 1233  git add .
+ 1234  git commit -m "profile api"
+ 1235  git push 
+ 1236  git remote add origin https://github.com/Ravi-Nikam/api_demo.git
+ 1237  git push -u origin main
+ 1238  git remote set-url origin https://github.com/Ravi-Nikam/Django_api.git
+ 1239  git push -u origin main
+ 1240  git history 
+ 1241  history 
+ 1242  cd Downloads/
+ 1243  ls
+ 1244  cd api_demo-master/
+ 1245  clear
+ 1246  ls
+ 1247  clear
+ 1248  api_demo/Scripts/activate
+ 1249  source api_demo/Scripts/activate
+ 1250  clear
+ 1251  python manage.py runserver
+ 1252  python3 manage.py runserver
+ 1253  clear
+ 1254  python3 manage.py makemigrations
+ 1255  python3 manage.py migrate
+ 1256  python3 manage.py runserver
+ 1257  clear
+ 1258  python3 manage.py runserver
+ 1259  clear
+ 1260  pip install django-allauth
+ 1261  git init .
+ 1262  history >> 111.txt 

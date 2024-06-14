@@ -73,7 +73,7 @@ def registration(request):
             'Gender': Gender
         }
         # Make a POST request to the API endpoint
-        BASEURL = "http://127.0.0.1:8000/"
+        BASEURL = "http://localhost:8000/"
         ENDPOINT ='register_api/'
         headers = {'Content-Type': 'application/json'}
         response = requests.post(BASEURL + ENDPOINT, json.dumps(data),headers=headers)
@@ -117,11 +117,12 @@ def login(request):
             "Password":password
         }
         headers = {'Content-Type': 'application/json'}
-        BASE_URL = "http://127.0.0.1:8000/"
+        BASE_URL = "http://localhost:8000/"
         ENDPOINT = 'login_api/'
         res=requests.post(BASE_URL + ENDPOINT, json.dumps(data),headers=headers)
         print("=====>12222")
         # Perform authentication (assuming email is used for authentication)
+        print("==========>",res.json())
         data=res.json()
         print("****************========>",data['emp']['Email'])
         if res.status_code == 200:
@@ -227,7 +228,7 @@ def Profile(request):
                 }
         if token_verify:
             try:
-                BASEURL = "http://127.0.0.1:8000/"
+                BASEURL = "http://localhost:8000/"
                 ENDPOINT ='Edit_profile_details/'
                 print("TOKEN",token)
                 # Headers for the request
@@ -243,7 +244,7 @@ def Profile(request):
     try:
         if token_verify:
             try:
-                BASEURL = "http://127.0.0.1:8000/"
+                BASEURL = "http://localhost:8000/"
                 ENDPOINT ='get_profile_details/'
                 # Headers for the request
                 data = {

@@ -40,19 +40,20 @@ INSTALLED_APPS = [
     'rest_framework',
     # 'Admin',
     'Authentication',
-    'rest_framework_simplejwt'
+    'rest_framework_simplejwt',
+    
+    
+    
     
     
     # The following apps are required:
-    'django.contrib.auth',
-    'django.contrib.messages',
 
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     
-    
-    'allauth.socialaccount.providers.github',
+    'django.contrib.sites',
+    # 'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -200,10 +201,17 @@ SIMPLE_JWT = {
 AUTH_USER_MODEL = 'Authentication.User'
 
 # AUTH_USER_MODEL = 'Admin.User'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 
 
+# client id 864617282393-pf0kqn2vum1actrvpiik7j0pg8807i4g.apps.googleusercontent.com
 
+# client-secrte
+# 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
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -213,16 +221,21 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-# Provider specific settings
+LOGIN_REDIRECT_URL = "index"
+
+SITE_ID = 1  # new
+
+
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '123',
-            'secret': '456',
-            'key': ''
-        }
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
     }
 }
