@@ -41,19 +41,14 @@ INSTALLED_APPS = [
     # 'Admin',
     'Authentication',
     'rest_framework_simplejwt',
-    
-    
-    
-    
-    
     # The following apps are required:
-
+    # 3rd party
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     
     'django.contrib.sites',
-    # 'allauth.socialaccount.providers.github',
+    'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -208,10 +203,6 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 
 
 
-# client id 864617282393-pf0kqn2vum1actrvpiik7j0pg8807i4g.apps.googleusercontent.com
-
-# client-secrte
-# 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
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
@@ -239,3 +230,17 @@ SOCIALACCOUNT_PROVIDERS = {
         'OAUTH_PKCE_ENABLED': True,
     }
 }
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'SCOPE': [
+            'user',
+            'repo',
+            'read:org',
+        ],
+    }
+}
+
+
+

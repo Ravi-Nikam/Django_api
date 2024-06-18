@@ -41,12 +41,30 @@ def verify_token(request):
 
 def index(request):    
     try:
-        authentication_classes = [JWTAuthentication]
-        jwt_token = request.META.get('HTTP_AUTHORIZATION', '').split(' ')[1]
-        print("FFFFFFFFFFFFFFFFFFFFFF",jwt_token)
+        print("User=============>",request.user)
+        # print("------------------------->>",request.session['user_email'])
+        if request.session.get('user_email') and request.COOKIES.get('jwt'):
+            return render(request,'index.html')
+        else:
+            request.session['user_email'] = str(request.user)
+            try:
+                refresh = RefreshToken.for_user(request.user)
+                print(refresh)
+                print(refresh.access_token)
+                response = HttpResponseRedirect(reverse('index'))
+                response.set_cookie('jwt',refresh.access_token, httponly=True)
+                return response
+            except Exception as e:
+                print("Error in generating token",e)
+            print("-------------------------@@@@@@@@@@@@@@>>>>>>>>>>",request.session['user_email'])
+            return render(request,'index.html')
+            # return HttpResponse("DONE")
+            
+            # authentication_classes = [JWTAuthentication]
+            # jwt_token = request.META.get('HTTP_AUTHORIZATION', '').split(' ')[1]
+            # print("FFFFFFFFFFFFFFFFFFFFFF",jwt_token)
     except Exception as e:
-        print("index error",e)  
-    return render(request, 'index.html')
+        print("user facing error===========>",e)            
 
 
 def registration(request):
@@ -202,6 +220,10 @@ def login_api(request):
 
 
 def Profile(request):
+    try:
+        print("User=============>",request.user)
+    except Exception as e:
+        print("user facing error===========>",e)
     permission_classes = [IsAuthenticated]
     authentication_classes = [JWTAuthentication] 
     print("session",request.session['user_email'])
@@ -224,7 +246,7 @@ def Profile(request):
                     'last_name': last_name,
                     'phone_number': Phone_Number,
                     'gender': Gender,
-                    'mail' : request.session['user_email']
+                    'mail' : request.session.get('user_email')
                 }
         if token_verify:
             try:
@@ -248,8 +270,9 @@ def Profile(request):
                 ENDPOINT ='get_profile_details/'
                 # Headers for the request
                 data = {
-                    'mail' : request.session['user_email']
+                    'mail' : request.session.get('user_email')
                 }
+                print(data.get('mail'))
                 headers = {
                     'Content-Type': 'application/json',
                     'Authorization': f'Bearer {token}'
@@ -315,3 +338,7 @@ def Edit_profile_details(request):
         print("MAil user information == >",e)
         
     return Response({"message": "Profile updated successfully"}, status=status.HTTP_200_OK)
+
+
+def about(request):
+    return render(request,'about.html')

@@ -15,4 +15,5 @@ urlpatterns = [
     path('get_profile_details/',views.get_profile_details,name="get_profile_details"),
     path('Edit_profile_details/',views.Edit_profile_details,name="Edit_profile_details"),  
     path('update_profile/',views.Edit_profile_details,name="update_profile"),
+    path('About_us/',views.about,name="About_us"),
 ]

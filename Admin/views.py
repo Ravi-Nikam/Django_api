@@ -24,6 +24,10 @@ from rest_framework.permissions import IsAuthenticated,AllowAny,IsAdminUser
 from django.contrib.auth import get_user_model
 
 
+# 3rd api
+from allauth.socialaccount.models import SocialAccount
+
+
 User = get_user_model()
 
 
@@ -219,6 +223,11 @@ from django.conf import settings
 import jwt
 
 def Profile(request):
+    try:
+        print("User=============>",request.user)
+    except Exception as e:
+        print("user facing error")
+    social_account = SocialAccount.objects.filter(user=request.user, provider='google').first()
     token=request.COOKIES.get('jwt')
     try:
         # Decode the token using UntypedToken
