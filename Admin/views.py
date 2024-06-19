@@ -322,7 +322,8 @@ def get_profile_details(request):
         logger.error(f"An error occurred: {e}")
         return Response({"detail": "Unknown error occurred", "code": "unknown_error"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
-    
+# def contact_us(request):
+        return render(request,'contact.html')
 
 # @api_view(['POST'])
 # def profile_api(request):
