@@ -32,7 +32,6 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
-    path('accounts/', include('allauth.urls')),
-    # path('auth/google/callback/',google_auth_callback, name='google-auth-callback'),
     
+    # path('auth/google/callback/',google_auth_callback, name='google-auth-callback'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

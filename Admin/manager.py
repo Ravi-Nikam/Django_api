@@ -3,16 +3,6 @@ from django.contrib.auth.hashers import make_password,check_password
 
 class UserManager(BaseUserManager):
     def create_user(self, email, first_name, last_name, Gender, phone_number, dob, password=None):
-        # if not email:
-        #     raise ValueError('The Email field is required')
-        # if not first_name:
-        #     raise ValueError('The First Name field is required')
-        # if not last_name:
-        #     raise ValueError('The Last Name field is required')
-        # if not phone_number:
-        #     raise ValueError('The Phone Number field is required')
-        # if not dob:
-        #     raise ValueError('The Date of Birth field is required')
         print("2***************************")
         email = self.normalize_email(email)
         hashed_password = make_password(password)

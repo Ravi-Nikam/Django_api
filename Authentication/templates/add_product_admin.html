@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Contact</title>
+</head>
+
+{% if msg %}
+<div class="alert alert-danger">
+  <strong>!!</strong> {{ msg }}
+</div> 
+{% endif %}
+
+
+
+
+{% block body %}
+<body>
+  <!-- Content page -->
+  <section class="bg0 p-t-10 p-b-22" style="padding-left: 35%;">
+    <div class="container" style="border: 11px; padding-top: 70px">
+      <div class="flex-w flex-tr">
+          <form method="post" action="{% url 'product' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4 class="mtext-105 cl2 txt-center p-b-30">
+              Add Product
+            </h4>
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="file" name="Seller_product_picture">
+            </div>
+
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="Product_name" placeholder="Product Name ">
+            </div>
+
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="Product_price" placeholder="Product price ">
+            </div>
+
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="Product_description" placeholder="Product Description">
+            </div>
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <select class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="Product_category">
+                {% for i in product_info %}
+                  <option value="{{ i.category }}">{{ i.category }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <select class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="Product_brand">
+                <option value="Levis">Levis</option>
+                <option value="Pape">Pape</option>
+                <option value="Danieam">Danieam</option>
+              </select>
+            </div>
+          
+            <div class="bor8 m-b-20 how-pos4-parent">
+              <select class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" name="Product_size">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="XL">XL</option>
+                <option value="XXL">XXL</option>
+              </select>
+            </div>
+            <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+              Add Product
+            </button>
+          </form>
+  </section>  
+{% endblock %}
+</body>
+</html>

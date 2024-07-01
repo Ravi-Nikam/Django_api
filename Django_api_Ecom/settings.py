@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-r7i#st7(@e%xy&=b$ow=8n50xfw$$uo%)71@cup6-squhnqig(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -229,7 +230,7 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         'OAUTH_PKCE_ENABLED': True,
     }
-}
+},
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -244,3 +245,27 @@ SOCIALACCOUNT_PROVIDERS = {
 
 
 
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',  # Set to 'js_sdk' to use the Facebook connect SDK
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v13.0',
+        'GRAPH_API_URL': 'https://graph.facebook.com/v13.0',
+    }
+}

@@ -59,7 +59,8 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline"> 
                     <div class="form-text text-end" style="padding-left:45px;">
-                      <a href="{% url 'account_login' %}" id="continueWithGmail">Continue with Gmail</a>
+                      <a href="{% url 'account_login'  %}" id="continueWithGmail">Continue with Gmail</a>
+                  
                     </div>
                   </div>
                   {% comment %} <div class="form-outline"> 
@@ -82,7 +83,9 @@
               </div>
               <div class="mt-4 pt-1">
               
-              
+                {% load socialaccount %}
+                {% providers_media_js %}
+                <a href="#">Facebook Connect</a>
               </div>
               <style>
                 #continueWithGmail {

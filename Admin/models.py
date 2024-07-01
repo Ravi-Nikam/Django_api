@@ -51,14 +51,6 @@ class User(AbstractBaseUser,PermissionsMixin):
 
 
 
-
-
-
-
-
-
-
-
 class Employee(models.Model):
     First_Name  = models.CharField(max_length=50)
     Last_Name = models.CharField(max_length=50)

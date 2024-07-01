@@ -12,7 +12,6 @@ urlpatterns = [
     path('home/', views.index, name='index'),
     path('profile/',views.Profile,name="profile"),
     # path('profile_api/',views.profile_api,name="profile_api"),
-
     path('get_profile_details/',views.get_profile_details,name="get_profile_details"),
 
     

@@ -3,6 +3,9 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractBaseUser
 from Authentication.manager import UserManager
+from django.utils.crypto import get_random_string
+from django.utils.text import slugify
+
 
 # Create your models here.
 
@@ -68,5 +71,63 @@ class Employee(models.Model):
     def __str__(self):
         return self.Email
     
+
+    
+from django.db import models
+from django.urls import reverse
+
+
+# Create your models here.
+# create category table into database.
+
+class Category_table(models.Model):
+    cname = models.CharField(max_length=200, primary_key=True)
+    slug = models.SlugField(max_length=200, unique=True, default='')  # slug is a unique for category.
+    cat_img = models.ImageField(upload_to="category_list", default="default.png")
+    category_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.cname
+
+    def get_absolute_url(self):
+        return reverse('product_detail', args=[str(self.id)])
+
+
+def images_upl(instance, filename):
+    return 'cat_rel_product/{0}/{1}'.format(instance.category.cname, filename)
+
+
+def custom_slug(name,artist):
+    custom_string = name + str(artist) + " " + get_random_string(length=8) 
+    
+    slug = slugify(custom_string)
+
+    while product.objects.filter(slug=slug).exists():
+        slug = slugify(custom_string) + get_random_string(length=4)
+
+    return slug
+
+
+class product(models.Model):
+    category = models.ForeignKey(Category_table, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, db_index=True)
+    slug = models.SlugField(max_length=200, db_index=True, blank=True, unique=True)
+    image = models.ImageField(upload_to=images_upl, blank=True)
+    description = models.TextField(blank=True)
+    price = models.IntegerField(default=0)
+    brand = models.CharField(max_length=10)
+    size = models.CharField(max_length=3,default="None")
+    available = models.BooleanField(default=True)
+    dates=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name + "****" + self.slug
+
+    def get_absolute_url(self):
+        return reverse("cat_rel_pro", kwargs={"slug": self.slug})
     
     
+    def save(self,*args,**kwargs):
+        # modify_lyr_name(self.Song_Lyrics_File.path) # calling converting file function
+        self.slug = custom_slug(self.name,self.brand)
+        super().save(*args,**kwargs)

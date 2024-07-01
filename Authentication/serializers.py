@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Employee,User
+from .models import Employee,User,product
 from django.contrib.auth.hashers import make_password,check_password
 from django.contrib.auth import authenticate
 
@@ -36,6 +36,7 @@ class EmpSerializers(serializers.ModelSerializer):
 class LoginSerializers(serializers.Serializer):
     Email = serializers.CharField(required=True)
     Password = serializers.CharField()
+    print("Email","password",Email,Password)
     def validate(self,attrs):
         # Email Attribute comes from Email = serializers.CharField(required=True) this and same for Password
         # They Are same as the Model attributes 
@@ -112,6 +113,12 @@ class edit_profile_serializer(serializers.ModelSerializer):
         except Exception as e:
             print("Maybe some error instance ",e)
     
+
+
+class product_serializers(serializers.ModelSerializer):
+    class Meta:
+        model = product
+        fields = "__all__"
         
        
 
