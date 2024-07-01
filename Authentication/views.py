@@ -15,7 +15,7 @@ from .models import Employee
 from .serializers import EmpSerializers,LoginSerializers,profile_serializer,edit_profile_serializer
 from django.contrib.auth import authenticate
 # Create your views here.
-
+#
 # JWT Configration
 # from rest_framework.authentication import TokenAuthentication
 from rest_framework_simplejwt.tokens import UntypedToken
