@@ -348,7 +348,6 @@ def view_all_product(request):
 def Product_description(request,slug):
     products=product.objects.get(slug=slug)
     return render(request,'product_description.html',{'Product':products})
-    print("******************>",products)
 
 def add_product(request):
     product_info=product.objects.all()

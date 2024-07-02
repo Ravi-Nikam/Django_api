@@ -36,6 +36,14 @@
 							<a href="{% url 'Product_description' slug=i.slug %}" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 								Quick View
 							</a>
+							
+							{% if user.is_authenticated and user.is_admin == "True" %}
+							<a href="{% url 'Product_description' slug=i.slug %}"  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1  trans-04 js-show-modal1">
+								Update Product
+							</a>
+							{% endif %}
+						</div>
+						<div class="block2-pic hov-img0" style="border: 1px solid #000;">
 						</div>
 
 						<div class="block2-txt flex-w flex-t p-t-14">

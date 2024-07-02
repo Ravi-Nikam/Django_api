@@ -19,7 +19,7 @@ urlpatterns = [
     path('About_us/',views.about,name="About_us"),
     path('contact_us/',views.contact_us,name="contact_us"),
     path('product/',views.add_product,name="product"),
-    path('view_all_product',views.view_all_product,name='view_all_product'),
+    path('view_all_product/',views.view_all_product,name='view_all_product'),
     path('Product_description/<slug:slug>',views.Product_description,name='Product_description'),
     path('add_product_api/', ProductCreateAPIView.as_view()),
     path('update_delete_product/<slug:slug>', ProductUpdateDeleteView.as_view()),  

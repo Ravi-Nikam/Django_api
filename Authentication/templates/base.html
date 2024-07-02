@@ -115,9 +115,21 @@
                   <li><a href="home-03.html">Homepage 3</a></li>
                 </ul>
               </li>
-
+              {% if user.is_authenticated %}
+              <li class="active-menu">
+                <a href="#">Product</a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="{% url 'product' %}">Add Product</a>
+                  </li>
+                  {% comment %} <li>
+                    <a href="{% url 'update_delete_product/<slug:slug>' %}">Update Product</a>
+                  </li> {% endcomment %}
+                </ul>
+              </li>
+              {% endif %}
               <li>
-                <a href="{% url 'product' %}">Product</a>
+                <a href="{% url 'view_all_product' %}">View Product</a>
               </li>
 
               <li class="label1" data-label1="hot">
@@ -131,21 +143,19 @@
               <li>
                 <a href="{% url 'About_us' %}">About</a>
               </li>
+
               <li>
                 <a href="contact.html">Contact</a>
               </li>
               <li>
                 <a href="{% url 'profile' %}">Profile</a>
               </li>
-			  	  {% if user.is_authenticated %}   
-			  		  <li><a href="#">Logout</a></li>
-		  		  {% else %}
-              
-		  		  {% endif %}
-
+              {% if user.is_authenticated %}
+              <li><a href="#">Logout</a></li>
+              {% else %} {% endif %}
             </ul>
           </div>
-          
+
           <!-- Icon header -->
           <div class="wrap-icon-header flex-w flex-r-m">
             <div
@@ -160,7 +170,7 @@
             >
               <i class="zmdi zmdi-shopping-cart"></i>
             </div>
-            
+
             <a
               href="#"
               class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
@@ -169,21 +179,23 @@
               <i class="zmdi zmdi-favorite-outline"></i>
             </a>
             {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}" style="float: right;"><i class="fa fa-fw fa-user"></i>{{user}}</a>
+            <a href="{% url 'profile' %}" style="float: right"
+              ><i class="fa fa-fw fa-user"></i>{{user}}</a
+            >
             {% else %}
-                <a href="{% url 'login' %}" style="float: right;  "><i class="fa fa-fw fa-user"></i>Login</a>
+            <a href="{% url 'login' %}" style="float: right"
+              ><i class="fa fa-fw fa-user"></i>Login</a
+            >
             {% endif %}
           </div>
         </nav>
       </div>
     </div>
     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-      <div class="social_icon text-right" >
-          <ul >
-
-          </ul>
+      <div class="social_icon text-right">
+        <ul></ul>
       </div>
-  </div>
+    </div>
     <!-- Header Mobile -->
     <div class="wrap-header-mobile">
       <!-- Logo moblie -->
@@ -226,7 +238,6 @@
     </div>
 
     <!-- Menu Mobile -->
-
 
     <!-- Modal Search -->
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
