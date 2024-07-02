@@ -15,7 +15,7 @@ from .models import Employee,product
 from .serializers import *
 from django.contrib.auth import authenticate
 # Create your views here.
-
+#
 # JWT Configration
 # from rest_framework.authentication import TokenAuthentication
 from rest_framework_simplejwt.tokens import UntypedToken
@@ -460,7 +460,10 @@ class ProductUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 def about(request):
     return render(request,'about.html')
+<<<<<<< HEAD
 
 
 def contact_us(request):
     return render(request,'contact.html')
+=======
+>>>>>>> origin/main
