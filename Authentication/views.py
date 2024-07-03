@@ -460,10 +460,19 @@ class ProductUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
 
 def about(request):
     return render(request,'about.html')
-<<<<<<< HEAD
 
 
 def contact_us(request):
     return render(request,'contact.html')
-=======
->>>>>>> origin/main
+
+    cart_item_id = models.AutoField(primary_key=True)
+    user_cart_item = models.ForeignKey(User, on_delete=models.CASCADE) # which users cart
+    product_cart_item  = models.ForeignKey(product, on_delete=models.CASCADE) # Product in card
+    cart_quantity_item = models.PositiveIntegerField(default=1) # total item
+    cart_total_item = models.IntegerField() # cart amount 
+    
+    
+def add_to_cart(request,slug):
+    products=product.objects.filter(slug=slug)
+    print("==========================>",products)
+    return render(request,'add_cart.html',{"cart_info" :products})

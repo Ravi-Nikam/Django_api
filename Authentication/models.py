@@ -131,3 +131,31 @@ class product(models.Model):
         # modify_lyr_name(self.Song_Lyrics_File.path) # calling converting file function
         self.slug = custom_slug(self.name,self.brand)
         super().save(*args,**kwargs)
+        
+
+# whole cart
+class cart(models.Model):
+    user_cart_item = models.ForeignKey(User, on_delete=models.CASCADE) # which users cart
+    created = models.DateTimeField(auto_now_add=True)
+    
+    
+    # def total_price():
+    #     total = 0
+    #     for item in cart_item.objects.all():
+    #         total += item.cart_total_item
+    #     return total
+            
+            
+class cart_item(models.Model): # cart details item
+    cart_id = models.ForeignKey(cart,on_delete=models.CASCADE,default=1)
+    cart_item_id = models.AutoField(primary_key=True)
+    product_cart_item  = models.ForeignKey(product, on_delete=models.CASCADE) # Product in card
+    cart_quantity_item = models.PositiveIntegerField(default=1) # total item
+    cart_total_item = models.IntegerField() # cart amount 
+    
+    
+    # def total_cart_amount():
+    #     total = 0
+    #     for item in cart_item.objects.all():
+    #         total += item.cart_total_item
+    #     return total

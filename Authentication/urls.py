@@ -23,5 +23,6 @@ urlpatterns = [
     path('Product_description/<slug:slug>',views.Product_description,name='Product_description'),
     path('add_product_api/', ProductCreateAPIView.as_view()),
     path('update_delete_product/<slug:slug>', ProductUpdateDeleteView.as_view()),  
+    path('add_to_cart/<slug:slug>',views.add_to_cart,name='add_to_cart'),
     path('accounts/', include('allauth.urls')),
 ]
