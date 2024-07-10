@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view,permission_classes
+from django.contrib.auth.decorators import login_required   
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.tokens import AccessToken
 from rest_framework.response import Response
@@ -11,7 +12,7 @@ import requests
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
 import json
-from .models import Employee,product
+from .models import Employee,product,cart_item,cart
 from .serializers import *
 from django.contrib.auth import authenticate
 # Create your views here.
@@ -41,7 +42,12 @@ def verify_token(request):
 
 def index(request):    
     try:
-        print("User=============>",request.user)
+        try:
+            if request.user.is_authenticated:
+                user_id = request.user.id
+                print("--------------...........?????????",user_id)
+        except Exception as e:
+            print("index error",e)
         # print("------------------------->>",request.session['user_email'])
         if request.session.get('user_email') and request.COOKIES.get('jwt'):
             return render(request,'index.html')
@@ -220,9 +226,10 @@ def login_api(request):
         return Response(serializer.errors)
 
 
+@login_required
 def Profile(request):
     try:
-        print("User=============>",request.user)
+        print("User1=============>",request.user)
     except Exception as e:
         print("user facing error===========>",e)
     permission_classes = [IsAuthenticated]
@@ -349,6 +356,7 @@ def Product_description(request,slug):
     products=product.objects.get(slug=slug)
     return render(request,'product_description.html',{'Product':products})
 
+@login_required
 def add_product(request):
     product_info=product.objects.all()
     print("User ========================>>>>",product_info)
@@ -448,7 +456,7 @@ def add_update_product_details(request):
             
         except Exception as e:
             print("Data fatching issue",e)
-    print(request.user)
+    print("TVTVTVTVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV",request.user)
     return render(request,'add_product_admin.html',{'product_info':product_info})
 
 
@@ -465,14 +473,90 @@ def about(request):
 def contact_us(request):
     return render(request,'contact.html')
 
-    cart_item_id = models.AutoField(primary_key=True)
     user_cart_item = models.ForeignKey(User, on_delete=models.CASCADE) # which users cart
+    created = models.DateTimeField(auto_now_add=True)
+
+    cart_id = models.ForeignKey(cart,on_delete=models.CASCADE,default=1)
     product_cart_item  = models.ForeignKey(product, on_delete=models.CASCADE) # Product in card
+    cart_item_id = models.AutoField(primary_key=True)
     cart_quantity_item = models.PositiveIntegerField(default=1) # total item
     cart_total_item = models.IntegerField() # cart amount 
     
-    
+@login_required    
 def add_to_cart(request,slug):
-    products=product.objects.filter(slug=slug)
-    print("==========================>",products)
-    return render(request,'add_cart.html',{"cart_info" :products})
+    try:
+        print("/////////////////",slug)
+        products=product.objects.get(slug=slug) 
+    #     try:
+    #         # quantity = request.POST['quantity']
+    #         request.session[products.id] = request.POST['quantity'] + products.id
+    #     except Exception as e:
+    #         print("SHOW ME ERROR",e)
+    #     print(">>>>>>>>>>>>===============>",products,request.user)
+    except Exception as e:
+        print("Error in fetching product",e)
+    carts,created=cart.objects.get_or_create(user_cart_item=request.user)
+    print("***************************>>>>>>>>>>>>>",carts,created)
+    try:
+        cartitem,created=cart_item.objects.get_or_create(cart_id = carts,product_cart_item = products) 
+        # created flag: If a new cart_item is created, created will be True. If an existing item is retrieved, created will be False
+        if not created:
+            cartitem.cart_quantity_item =+1
+            
+        products.incart=True
+        products.save()
+        cartitem.save()
+    except Exception as e:
+        print("Error in cart item",e)
+
+    # print("==========================>",products)
+    # carts_id=cart.objects.filter(user_cart_item=request.user)
+    # print(carts_id)
+    # for c in carts_id:
+    #     carts_item = cart_item.objects.filter(cart_id=c)
+    #     print("here is the item",carts_item)
+    #     amount=[]
+    #     total_amount = 0
+    #     for item in carts_item:
+    #         print("---------------------************----------------->>>>",(item.product_cart_item.price*item.cart_quantity_item))
+    #         amount.append(item.product_cart_item.price)
+    #         total_amount += item.product_cart_item.price*item.cart_quantity_item
+    #     # print(amount * item.cart_quantity_item)
+    #     print("----------------------******************-------------------????",total_amount)
+    # print("-------------------------------------->>>>",cartitem)
+    # qty=1
+    # qty=request.session.get(products.id)
+    # print("qty ==================>",qty)
+    # return render(request,'add_cart.html',{"cart":products,"cartitem":carts_item,'total':total_amount,"qty":qty})
+    return redirect('Product_description',slug=slug)
+
+
+def remove_to_cart(request,slug):
+    try:
+        print("======>>>",product.slug)
+        products=product.objects.get(slug=slug) 
+        products.incart = False
+        products.save()
+    except Exception as e:
+        print("Error in fetching product",e)
+    
+    try:
+        users_cart=cart.objects.get(user_cart_item=request.user)
+        print("********************1231346789",users_cart)
+        carts=cart_item.objects.get(cart_id=users_cart,product_cart_item = products).delete() # to remove the product from cart_item models
+        print(carts)
+    except Exception as e:
+        print("Error in fetching cart and cart item",e)
+        
+    return redirect('Product_description',slug=slug)    
+
+
+def view_cart_item(request):
+    try:
+        print(request.user)
+        all_cart_details=cart_item.objects.filter(cart_id__user_cart_item = request.user)
+        print(all_cart_details.slug)
+    except Exception as e:
+        print("Error in fetching cart",e)
+    # print("che aa bapdo ahiya === >>",users_cart)
+    

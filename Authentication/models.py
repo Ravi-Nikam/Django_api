@@ -119,7 +119,8 @@ class product(models.Model):
     size = models.CharField(max_length=3,default="None")
     available = models.BooleanField(default=True)
     dates=models.DateTimeField(auto_now_add=True)
-
+    incart = models.BooleanField(default=False)
+    
     def __str__(self):
         return self.name + "****" + self.slug
 
@@ -128,8 +129,9 @@ class product(models.Model):
     
     
     def save(self,*args,**kwargs):
-        # modify_lyr_name(self.Song_Lyrics_File.path) # calling converting file function
-        self.slug = custom_slug(self.name,self.brand)
+        if self.incart == False and self.slug == "":
+            # modify_lyr_name(self.Song_Lyrics_File.path) # calling converting file function
+            self.slug = custom_slug(self.name,self.brand)
         super().save(*args,**kwargs)
         
 
@@ -144,14 +146,19 @@ class cart(models.Model):
     #     for item in cart_item.objects.all():
     #         total += item.cart_total_item
     #     return total
-            
+    def __str__(self):
+        return str(self.user_cart_item)
+    
             
 class cart_item(models.Model): # cart details item
     cart_id = models.ForeignKey(cart,on_delete=models.CASCADE,default=1)
-    cart_item_id = models.AutoField(primary_key=True)
     product_cart_item  = models.ForeignKey(product, on_delete=models.CASCADE) # Product in card
+    cart_item_id = models.AutoField(primary_key=True)
     cart_quantity_item = models.PositiveIntegerField(default=1) # total item
-    cart_total_item = models.IntegerField() # cart amount 
+    
+    def __str__(self):
+        return str(self.cart_id)
+
     
     
     # def total_cart_amount():
